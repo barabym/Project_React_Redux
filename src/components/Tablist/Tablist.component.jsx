@@ -2,21 +2,10 @@ import React, { Component } from "react";
 
 import './Tablist.styles.css';
 
-// function Tab(props) {
-//   return (
-//     <div className="tab" onClick={() => { props.onClickTab(props.tabName) }}>
-//       <span>{props.tabName}</span>
-//       <button className="button-del-tab" onClick={() => { props.onClickDelTab(props.tabName) }}>X</button>
-//     </div>
-//   );
-// }
-
 class Tablist extends Component {
 
   render() {
-    // console.log(this.props.selectedCurrencyAbbr);
     
-    // let aaa = ["AAA", "SSS", "DDD", "FFF", "GGG", "HHH", "JJJ", "KKK", "LLL", "ZZZ", "XXX", "CCC", "VVV", "BBB", "NNN", "MMM"];
     return (
       <div className="tablist">
         {this.props.listFavorite.map((item) => {

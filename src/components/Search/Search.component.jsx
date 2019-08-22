@@ -21,13 +21,12 @@ class Search extends Component {
   }
 
   onClickSearchButton = () => {
-    this.props.onClickSearchButton(this.state.searchWord);
+    this.props.setfilterWordToStore(this.state.searchWord);
   }
 
   onChangeSearchInput = (e) => {
     this.setState({ searchWord: e.target.value });
-    if (!e.target.value) { this.props.onClickSearchButton("") }
-    
+    if (!e.target.value) { this.props.setfilterWordToStore("") }
   }
 
   render() {

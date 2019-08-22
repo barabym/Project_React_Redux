@@ -1,2 +1,2 @@
-import ItemList from './ItemList.component.jsx'
+import ItemList from './ItemList.container'
 export default ItemList

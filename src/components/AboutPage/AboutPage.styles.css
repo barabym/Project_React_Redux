@@ -1,17 +1,4 @@
-.content {
-  /* height: 100vh; */
-  /* box-sizing: border-box; */
-  /* padding: 15px; */
-  /* color: white; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* flex: 1 1 65%; */
-  /* flex: 1 1 64%; */
-  /* min-width: 0; */
-}
-
 .about {
   font-size: 5rem;
   text-align: center;
 }
-

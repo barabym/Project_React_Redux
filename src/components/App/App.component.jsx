@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route } from 'react-router-dom';
 
 import './App.styles.css';
@@ -6,23 +6,21 @@ import './App.styles.css';
 import Sidebar from "../Sidebar";
 import Content from "../Content";
 
-class App extends Component {
+function App() {
 
-  render() {
-    return (
-      <div className="app">
-        <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
-          <>
-            <Sidebar />
-            <Content />
-          </>
-        )} />
-        <Route exact path={["/about", "/favorite"]} render={() => (
+  return (
+    <div className="app">
+      <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
+        <>
+          <Sidebar />
           <Content />
-        )} />
-      </div>
-    );
-  }
+        </>
+      )} />
+      <Route exact path={["/about", "/favorite"]} render={() => (
+        <Content />
+      )} />
+    </div>
+  );
 }
 
 export default App;

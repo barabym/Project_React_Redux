@@ -1,2 +1,2 @@
-import Search from './Search.component.jsx'
+import Search from './Search.container'
 export default Search

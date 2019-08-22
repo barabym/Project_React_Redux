@@ -2,7 +2,7 @@ import axios, { } from "axios";
 import moment, { } from "moment";
 
 export function getArrRateAndArrDateCurrencyInRange(idCurrency, startDate, endDate) {
-// alert (idCurrency+" "+startDate+" "+endDate);
+
   startDate = moment(startDate).format("YYYY-M-D");
   endDate = moment(endDate).format("YYYY-M-D");
 
@@ -17,7 +17,7 @@ export function getArrRateAndArrDateCurrencyInRange(idCurrency, startDate, endDa
         baseRangeDate.push(moment(element.Date).format("  DD MMM YYYY  "));
         baseRangeRate.push(element.Cur_OfficialRate);
       });
-      // alert (baseRangeDate+"---"+baseRangeRate);
+
       return [baseRangeDate, baseRangeRate];
     })
 }

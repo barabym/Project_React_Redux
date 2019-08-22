@@ -9,11 +9,13 @@ import { getBaseAfterFilter } from "../../service/getBaseAfterFilter.js";
 class ItemList extends Component {
 
   onClickItem(item) {
-    this.props.onClickSelectCurrencyItem(item);
+    this.props.setSelectedCurrencyToStore(item);
   }
 
   render() {
-    let baseItem = getBaseAfterFilter(this.props.baseItem, this.props.filterWord);
+
+    let baseItem = getBaseAfterFilter(this.props.generalStore.baseCurrency, this.props.searchStore.filterWord);
+
     return (
       <div className="item-list">
         <div className="item-list__header">
@@ -24,7 +26,7 @@ class ItemList extends Component {
         </div>
         <ul className="item-list__body">
           {baseItem.map((item) => {
-            let flagSelectedItem = (item.ID == this.props.idSelectedCurrency);
+            let flagSelectedItem = (item.ID == this.props.generalStore.selectedCurrency.ID);
             return <li key={item.ID} className={flagSelectedItem ? "item-list__item item-list__item_selected" :
               "item-list__item"} onClick={() => this.onClickItem(item)}>
               <Item

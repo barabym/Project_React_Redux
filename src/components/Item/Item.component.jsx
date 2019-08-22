@@ -1,28 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 
 import './Item.styles.css';
 
-class Item extends Component {
+function Item(props) {
 
-  render() {
-    return (
-      <>
-        <div className={this.props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-          {this.props.item.Abbr}
-        </div>
-        <div className={this.props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-          {this.props.item.Scale + this.props.item.SymbolCur}
-        </div>
-        <div className={this.props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-          {this.props.item.Rate}
-        </div>
-        <div className={this.props.item.Diff == 0 ? "item-box item-box_diff-neutral" :
-          this.props.item.Diff > 0 ? "item-box item-box_diff-positive" : "item-box item-box_diff-negative"}>
-          {this.props.item.Diff > 0 ? "+" + this.props.item.Diff : this.props.item.Diff}
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
+        {props.item.Abbr}
+      </div>
+      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
+        {props.item.Scale + props.item.SymbolCur}
+      </div>
+      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
+        {props.item.Rate}
+      </div>
+      <div className={props.item.Diff == 0 ? "item-box item-box_diff-neutral" :
+        props.item.Diff > 0 ? "item-box item-box_diff-positive" : "item-box item-box_diff-negative"}>
+        {props.item.Diff > 0 ? "+" + props.item.Diff : props.item.Diff}
+      </div>
+    </>
+  );
 }
 
 export default Item;

@@ -1,4 +1,5 @@
 import { connect } from "react-redux"
+
 import { setValueInputFromCurrencyToStore, setIdDropListCurrencyToStore } from "../../action/converter.action";
 import { setListFavoriteToStore, setBaseCurrencyToStore, setSelectedCurrencyToStore } from "../../action/general.action";
 import { setBaseRangeToStore, setFromDateToStore, setEndDateToStore } from "../../action/chart.action";
