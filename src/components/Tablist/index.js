@@ -1,2 +1,2 @@
-import Tablist from './Tablist.component.jsx'
+import Tablist from './Tablist.container'
 export default Tablist

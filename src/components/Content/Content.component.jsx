@@ -59,14 +59,6 @@ class Content extends Component {
     }
   }
 
-  onChangeFromInputValue = (value) => {
-    this.props.setValueInputFromCurrencyToStore(value);
-  }
-
-  onChangeDroplist = (value) => {
-    this.props.setIdDropListCurrencyToStore(value);
-  }
-
   onChangeFromDate = (date) => {
     this.props.setFromDateToStore(date)
   }
@@ -128,21 +120,13 @@ class Content extends Component {
   }
 
   render() {
-    const { generalStore, converterStore, chartStore, favoriteChartStore } = this.props;
-
-    let valueInputTo = this.convertCurrency();
-
-    let selectedCurrencyAbbr = generalStore.selectedCurrency.Abbr ? generalStore.selectedCurrency.Abbr :
-      generalStore.baseCurrency[0] ? generalStore.baseCurrency[0].Abbr : "";
-
-    let dropListAbbr = generalStore.baseCurrency[0] ? generalStore.baseCurrency[converterStore.idDropListCurrency].Abbr : "";
+    const { chartStore, favoriteChartStore } = this.props;
 
     return (
       <>
         <Route exact path={["/", "/currensies"]} render={() => (
           <>
             <Menu />
-
             <div className="content">
               <Button
                 onClickButton={this.onClickAddFavoriteCurrency}
@@ -163,16 +147,10 @@ class Content extends Component {
         <Route exact path="/calculator" render={() => (
           <>
             <Menu />
-
             <div className="content">
               <Converter
-                valueInputFrom={converterStore.valueInputFromCurrency}
-                valueInputTo={valueInputTo}
-                selectedCurrencyAbbr={selectedCurrencyAbbr}
-                baseCurrency={generalStore.baseCurrency}
-                dropListAbbr={dropListAbbr}
+                valueInputTo={this.convertCurrency()}
                 onChangeFromInputValue={this.onChangeFromInputValue}
-                onChangeDroplist={this.onChangeDroplist}
               />
               <Chart
                 onChangeFromDate={this.onChangeFromDate}
@@ -189,7 +167,6 @@ class Content extends Component {
         <Route exact path="/about" render={() => (
           <>
             <Menu style={"center"} />
-
             <div className="content">
               <AboutPage />
             </div>
@@ -199,13 +176,10 @@ class Content extends Component {
         <Route exact path="/favorite" render={() => (
           <>
             <Menu style={"center"} />
-
             <div className="content">
               <Tablist
-                listFavorite={this.props.generalStore.listFavorite}
                 onClickDelTab={this.onClickDelFavoriteCurrency}
                 onClickTab={this.onClickFavoriteSelectCurrencyTab}
-                selectedCurrencyAbbr={favoriteChartStore.favoriteSelectedCurrency.Abbr ? favoriteChartStore.favoriteSelectedCurrency.Abbr : ""}
               />
               <div className="chart-favorite-wrapper">
                 <Chart

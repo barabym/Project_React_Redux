@@ -1,24 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 
 import './Tablist.styles.css';
 
-class Tablist extends Component {
+function Tablist(props) {
 
-  render() {
-    
-    return (
-      <div className="tablist">
-        {this.props.listFavorite.map((item) => {
-          return (
-            <div key={item} className={item==this.props.selectedCurrencyAbbr ? "tab tab_selected" :
-            "tab"} onClick={() => { this.props.onClickTab(item) }}>
-              <span>{item}</span>
-              <button className="tab__button-del-tab" onClick={(e) => { this.props.onClickDelTab(e, item) }}>X</button>
-            </div>
-          )
-        })}
-      </div>)
-  }
+  const { generalStore, favoriteChartStore } = props;
+  let selectedCurrencyAbbr = favoriteChartStore.favoriteSelectedCurrency.Abbr || "";
+
+  return (
+    <div className="tablist">
+      {generalStore.listFavorite.map((item) => {
+        return (
+          <div key={item} className={item == selectedCurrencyAbbr ? "tab tab_selected" :
+            "tab"} onClick={() => { props.onClickTab(item) }}>
+            <span>{item}</span>
+            <button className="tab__button-del-tab" onClick={(e) => { props.onClickDelTab(e, item) }}>X</button>
+          </div>
+        )
+      })}
+    </div>)
 }
 
 export default Tablist;

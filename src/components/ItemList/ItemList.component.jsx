@@ -24,6 +24,7 @@ class ItemList extends Component {
           <div className="item-list__header-box">Rate</div>
           <div className="item-list__header-box">Diff</div>
         </div>
+        
         <ul className="item-list__body">
           {baseItem.map((item) => {
             let flagSelectedItem = (item.ID == this.props.generalStore.selectedCurrency.ID);
@@ -36,6 +37,7 @@ class ItemList extends Component {
             </li>
           })}
         </ul>
+        
       </div>
     );
   }
