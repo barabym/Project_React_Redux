@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.conf.js --open",
     "dev": "webpack --config ./config/webpack.dev.conf.js",
-    "pr od": "webpack --config ./config/webpack.prod.conf.js"
+    "prod": "webpack --config ./config/webpack.prod.conf.js"
   },
   "browserslist": [
     "> 1%",
@@ -50,6 +50,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }

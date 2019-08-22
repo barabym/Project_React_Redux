@@ -7,31 +7,24 @@ import Droplist from "../Droplist";
 class Converter extends Component {
 
   onChangeFromInputValue = (e) => {
-    this.props.onChangeFromInputValue(e.target.value);
-  }
-
-  onChangeDroplist = (e) => {
-    this.props.onChangeDroplist(e.target.selectedIndex);
+    this.props.setValueInputFromCurrencyToStore(e.target.value);
   }
 
   render() {
+    const { generalStore, converterStore } = this.props;
     return (
       <div className="converter">
         <div className="converter__warrper-for-string">
           <div className="converter__text">Value</div>
-          <input className="converter__input" type="number" value={this.props.valueInputFrom} onChange={this.onChangeFromInputValue} />
-          <div className="converter__text">{this.props.selectedCurrencyAbbr}
+          <input className="converter__input" type="number" value={converterStore.valueInputFromCurrency} onChange={this.onChangeFromInputValue} />
+          <div className="converter__text">{generalStore.selectedCurrency.Abbr || ""}
           </div>
         </div>
         <div className="converter__warrper-for-string">
           <div className="converter__text">Destination</div>
           <input className="converter__input" value={this.props.valueInputTo} readOnly />
           <div className="converter__text converter__text_select">
-            <Droplist
-              baseCurrency={this.props.baseCurrency}
-              onChangeDroplist={this.onChangeDroplist}
-              dropListAbbr={this.props.dropListAbbr}
-            />
+            <Droplist />
           </div>
         </div>
       </div>

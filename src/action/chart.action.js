@@ -1,7 +1,14 @@
-export function setBaseRangeToStore(baseRange) {
-  return {
-    type: "set_baseRange",
-    payload: baseRange
+import { getArrRateAndArrDateCurrencyInRange } from "../service/getArrRateAndArrDateCurrencyInRange";
+
+export function setBaseRangeToStore(currencyID, fromDate, endDate) {
+  return (dispatch) => {
+    getArrRateAndArrDateCurrencyInRange(currencyID, fromDate, endDate)
+      .then(response => {
+        dispatch({
+          type: "set_baseRange",
+          payload: response
+        });
+      });
   }
 }
 

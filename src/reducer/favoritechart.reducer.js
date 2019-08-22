@@ -2,7 +2,7 @@ const initialState = {
   favoriteSelectedCurrency:{},
   favoriteBaseRangeDate: [],
   favoriteBaseRangeRate: [],
-  favoriteFromDate: new Date().setDate(new Date().getDate() - 14),
+  favoriteFromDate: new Date().setDate(new Date().getDate() - 19),
   favoriteEndDate: new Date(),
 };
 

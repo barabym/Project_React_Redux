@@ -12,10 +12,10 @@ ul {
   width: 65%;
 }
 
-.menu_position-center {
+/* .menu_position-center {
   margin-left: 0;
   width: 100%;
-}
+} */
 
 .menu li {
   display: inline-block;
@@ -30,6 +30,6 @@ ul {
   border-left: 3px solid #424242;
 }
 
-.number-Favorite{
+.number-Favorite {
   color: red;
 }

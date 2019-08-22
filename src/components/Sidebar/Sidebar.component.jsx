@@ -1,42 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
 import './Sidebar.styles.css';
 
 import Search from "../Search";
 import ItemList from "../ItemList";
 
-class Sidebar extends Component {
-  
-  state = {
-    filterWord: "",
-  }
+function Sidebar() {
 
-  onClickSearchButton = (filterWord) => {
-    this.setState({ filterWord: filterWord });
-  }
-
-  onClickSelectCurrencyItem = (selectedCurrency) => {
-    this.props.setSelectedCurrencyToStore(selectedCurrency)
-    // console.log(selectedCurrency);
-    
-  }
-
-  render() {
-    const { generalStore } = this.props;
-    return (
-      <div className="sidebar">
-        <Search
-          onClickSearchButton={this.onClickSearchButton}
-        />
-        <ItemList
-          baseItem={generalStore.baseCurrency}
-          filterWord={this.state.filterWord}
-          idSelectedCurrency={generalStore.selectedCurrency.ID}
-          onClickSelectCurrencyItem={this.onClickSelectCurrencyItem}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className="sidebar">
+      <Search />
+      <ItemList />
+    </div>
+  )
 }
 
 export default Sidebar;

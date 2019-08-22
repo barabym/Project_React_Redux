@@ -1,2 +1,2 @@
-import Menu from './Menu.component.jsx'
+import Menu from './Menu.container'
 export default Menu

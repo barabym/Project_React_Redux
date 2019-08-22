@@ -1,2 +1,2 @@
-import Droplist from './Droplist.component.jsx'
+import Droplist from './Droplist.container'
 export default Droplist

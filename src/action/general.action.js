@@ -1,7 +1,15 @@
-export function setBaseCurrencyToStore(baseCurrency) {
-  return {
-    type: "set_baseCurrency",
-    payload: baseCurrency
+import { getBaseCurrency } from "../service/getBaseCurrency";
+
+export function setBaseCurrencyToStore() {
+  return (dispatch) => {
+    getBaseCurrency()
+      .then(response => {
+        dispatch({
+          type: "set_baseCurrency",
+          payload: response
+        });
+        dispatch(setSelectedCurrencyToStore(response[0]));
+      });
   }
 }
 

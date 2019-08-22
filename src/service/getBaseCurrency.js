@@ -40,5 +40,5 @@ function getSumbolCurr(Abbr) {
     SGD: "₴", KGS: "¤", KZT: "₸", TRY: "₺", GBP: "£", CZK: "Kč", SEK: "kr", CHF: "₣",
   }
 
-  return (objSymbolCur[Abbr]) ? objSymbolCur[Abbr] : "¤";
+  return objSymbolCur[Abbr] || "¤";
 }
