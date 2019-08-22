@@ -13,7 +13,6 @@ class Sidebar extends Component {
     getBaseCurrency().then(response => {
       if (!this.props.sidebarStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
       if (!this.props.sidebarStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
-
     });
   }
 

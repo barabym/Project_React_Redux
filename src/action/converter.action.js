@@ -5,13 +5,6 @@ export function setValueInputFromCurrencyToStore(valueInputFromCurrency) {
   }
 }
 
-export function setValueInputToCurrencyToStore(valueInputToCurrency) {
-  return {
-    type: "set_valueInputToCurrency",
-    payload: valueInputToCurrency
-  }
-}
-
 export function setIdDropListCurrencyToStore(idDropListCurrency) {
   return {
     type: "set_idDropListCurrency",

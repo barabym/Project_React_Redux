@@ -6,10 +6,6 @@ import Droplist from "../Droplist";
 
 class Converter extends Component {
 
-  // componentDidMount() {
-  //   alert("heloow convert");
-  // }
-
   onChangeFromInputValue = (e) => {
     this.props.setValueInputFromCurrencyToStore(e.target.value);
   }
@@ -18,17 +14,15 @@ class Converter extends Component {
     this.props.setIdDropListCurrencyToStore(e.target.selectedIndex);
   }
 
-  convertCurrency = (valueInputFrom = this.props.converterStore.valueInputFromCurrency, idDropListCurrency = this.props.converterStore.idDropListCurrency) => {
+  convertCurrency = () => {
 
-    //наверно нужно поменять ввод по умолчанию на стандарнтное присвоение
-
-    const { sidebarStore } = this.props;
+    const { sidebarStore, converterStore } = this.props;
     if (sidebarStore.selectedCurrency.Rate) {
       let rateCurrencyFrom = sidebarStore.selectedCurrency.Rate ? sidebarStore.selectedCurrency.Rate : "";
-      let rateCurrencyTo = sidebarStore.baseCurrency[idDropListCurrency].Rate;
+      let rateCurrencyTo = sidebarStore.baseCurrency[converterStore.idDropListCurrency].Rate;
       let scaleCurrencyFrom = sidebarStore.selectedCurrency.Scale ? sidebarStore.selectedCurrency.Scale : "";
-      let scaleCurrencyTo = sidebarStore.baseCurrency[idDropListCurrency].Scale;
-      let valueInputTo = (+valueInputFrom / scaleCurrencyFrom * rateCurrencyFrom / rateCurrencyTo * scaleCurrencyTo).toFixed(4);
+      let scaleCurrencyTo = sidebarStore.baseCurrency[converterStore.idDropListCurrency].Scale;
+      let valueInputTo = (+converterStore.valueInputFromCurrency / scaleCurrencyFrom * rateCurrencyFrom / rateCurrencyTo * scaleCurrencyTo).toFixed(4);
       return valueInputTo;
     }
     else return 1;

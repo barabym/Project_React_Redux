@@ -6,16 +6,6 @@ import './Datepicker.styles.css';
 
 class Datepicker extends Component {
 
-  // state = {
-  //   startDate: new Date()
-  // }
-
-  // handleChange = (date) => {
-  //   this.setState({
-  //     startDate: date
-  //   });
-  // }
-
   render() {
     return (
       <div>
