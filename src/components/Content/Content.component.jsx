@@ -11,18 +11,38 @@ import AboutPage from "../AboutPage";
 import Tablist from "../Tablist";
 
 import { getBaseCurrency } from "../../service/getBaseCurrency.js";
+import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
 
 class Content extends Component {
 
   componentDidMount() {
-    // alert (this.props.generalStore.selectedCurrency.ID);
+    // alert (!this.props.generalStore.baseCurrency[0]);
     if (localStorage.getItem('listFavorite')) {
       this.props.setListFavoriteToStore(JSON.parse(localStorage.getItem('listFavorite')))
     };
-    getBaseCurrency().then(response => {
-      if (!this.props.generalStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
-      if (!this.props.generalStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
-    });
+    if (!this.props.generalStore.baseCurrency[0]) {
+      getBaseCurrency().then(response => {
+        this.props.setBaseCurrencyToStore(response);
+        this.props.setSelectedCurrencyToStore(response[0]);
+      });
+    }
+    // getBaseCurrency().then(response => {
+    //   if (!this.props.generalStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
+    //   if (!this.props.generalStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
+    // });
+  }
+
+  componentDidUpdate(prevProps, PrevState) {
+    // const { setBaseRangeToStore } = this.props;
+    // alert ("asdasd");
+    if (prevProps.generalStore.selectedCurrency.ID !== this.props.generalStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
+      // alert (this.props.generalStore.selectedCurrency.ID);
+      getArrRateArrDateCurrencyInRange(this.props.generalStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
+        .then(response => {
+          // alert(response+"!!!!!!!!!!!!");
+          this.props.setBaseRangeToStore(response);
+        });
+    }
   }
 
   onChangeFromInputValue = (value) => {
@@ -31,6 +51,14 @@ class Content extends Component {
 
   onChangeDroplist = (value) => {
     this.props.setIdDropListCurrencyToStore(value);
+  }
+
+  onChangeFromDate = (date) => {
+    this.props.setFromDateToStore(date)
+  }
+
+  onChangeEndDate = (date) => {
+    this.props.setEndDateToStore(date)
   }
 
   onClickAddFavorite = () => {
@@ -86,6 +114,13 @@ class Content extends Component {
               />
               <Chart
                 flagDatePickersIsShow={true}
+                onChangeFromDate={this.onChangeFromDate}
+                onChangeEndDate={this.onChangeEndDate}
+                fromDate={this.props.chartStore.fromDate}
+                endDate={this.props.chartStore.endDate}
+                rangeDate={this.props.chartStore.baseRangeDate}
+                rangeRate={this.props.chartStore.baseRangeRate}
+                // aaa={this.props.generalStore.selectedCurrency.ID}
               />
             </div>
           </>
@@ -106,7 +141,14 @@ class Content extends Component {
                 onChangeFromInputValue={this.onChangeFromInputValue}
                 onChangeDroplist={this.onChangeDroplist}
               />
-              <Chart />
+              <Chart
+              onChangeFromDate={this.onChangeFromDate}
+              onChangeEndDate={this.onChangeEndDate}
+              fromDate={this.props.chartStore.fromDate}
+              endDate={this.props.chartStore.endDate}
+              rangeDate={this.props.chartStore.baseRangeDate}
+              rangeRate={this.props.chartStore.baseRangeRate}
+              />
             </div>
           </>
         )} />
@@ -136,10 +178,10 @@ class Content extends Component {
                 onClickDelTab={this.onClickDelFavorite}
               />
               <div className="chart-favorite-wrapper">
-                <Chart
+                {/* <Chart
                   flagDescriptionIsShow={true}
                   flagDatePickersIsShow={true}
-                />
+                /> */}
               </div>
             </div>
 
