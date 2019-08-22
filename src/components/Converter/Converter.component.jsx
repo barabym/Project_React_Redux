@@ -2,71 +2,60 @@ import React, { Component } from "react";
 
 import './Converter.styles.css';
 
-import Droplist from "../Droplist/Droplist.component.jsx";
+import Droplist from "../Droplist";
 
 class Converter extends Component {
 
-  state = {
-    FromInputValue: 1,
-    ToInputValue: 1,
-    ToCurrencyIdList: 0
+  onChangeFromInputValue = (e) => {
+    this.props.setValueInputFromCurrencyToStore(e.target.value);
   }
 
+  onChangeDroplist = (e) => {
+    this.props.setIdDropListCurrencyToStore(e.target.selectedIndex);
+  }
 
-  componentDidUpdate(prevProps, PrevState) {
-    if (prevProps.SelectedCurrencyID !== this.props.SelectedCurrencyID) {
-      this.convertCurrency(undefined, undefined);
+  convertCurrency = () => {
+
+    const { sidebarStore, converterStore } = this.props;
+    if (sidebarStore.selectedCurrency.Rate) {
+      let rateCurrencyFrom = sidebarStore.selectedCurrency.Rate ? sidebarStore.selectedCurrency.Rate : "";
+      let rateCurrencyTo = sidebarStore.baseCurrency[converterStore.idDropListCurrency].Rate;
+      let scaleCurrencyFrom = sidebarStore.selectedCurrency.Scale ? sidebarStore.selectedCurrency.Scale : "";
+      let scaleCurrencyTo = sidebarStore.baseCurrency[converterStore.idDropListCurrency].Scale;
+      let valueInputTo = (+converterStore.valueInputFromCurrency / scaleCurrencyFrom * rateCurrencyFrom / rateCurrencyTo * scaleCurrencyTo).toFixed(4);
+      return valueInputTo;
     }
-
-    // if (this.props.SelectedCurrency.ID && !prevProps.SelectedCurrency.ID) {
-    //   this.convertCurrency(undefined, undefined);
-    // };
-    // if (this.props.SelectedCurrency.ID && prevProps.SelectedCurrency.ID) {
-    //   if (prevProps.SelectedCurrency.ID !== this.props.SelectedCurrency.ID) {
-    //     this.convertCurrency(undefined, undefined);
-    //   };
-    // }
+    else return 1;
   }
 
   render() {
+    const { sidebarStore, converterStore } = this.props;
+
+    let selectedCurrencyAbbr = sidebarStore.selectedCurrency.Abbr ? sidebarStore.selectedCurrency.Abbr :
+      sidebarStore.baseCurrency[0] ? sidebarStore.baseCurrency[0].Abbr : "";
+    let dropListAbbr = sidebarStore.baseCurrency[0] ? sidebarStore.baseCurrency[converterStore.idDropListCurrency].Abbr : "";
+
     return (
       <div className="converter">
         <div className="converter__warrper-for-string">
           <div className="converter__text">Value</div>
-          <input className="converter__input" type="number" value={this.state.FromInputValue} onChange={this.onChangeFromInputValue} />
-          <div className="converter__text">{this.props.SelectedCurrencyAbbr}
+          <input className="converter__input" type="number" value={converterStore.valueInputFromCurrency} onChange={this.onChangeFromInputValue} />
+          <div className="converter__text">{selectedCurrencyAbbr}
           </div>
         </div>
         <div className="converter__warrper-for-string">
           <div className="converter__text">Destination</div>
-          <input className="converter__input" value={this.state.ToInputValue} readOnly />
+          <input className="converter__input" value={this.convertCurrency()} readOnly />
           <div className="converter__text converter__text_select">
             <Droplist
-              BaseCurrency={this.props.BaseCurrency}
+              baseCurrency={sidebarStore.baseCurrency}
               onChangeDroplist={this.onChangeDroplist}
+              dropListAbbr={dropListAbbr}
             />
           </div>
         </div>
       </div>
     )
-  }
-
-  onChangeFromInputValue = (e) => {
-    this.convertCurrency(e.target.value, undefined);
-  }
-
-  onChangeDroplist = (e) => {
-    this.setState({ ToCurrencyIdList: e.target.selectedIndex });
-    this.convertCurrency(undefined, e.target.selectedIndex);
-  }
-
-  convertCurrency = (FromInputValue = this.state.FromInputValue, CurrencyIdList = this.state.ToCurrencyIdList) => {
-    let FromCurrencyRate = this.props.SelectedCurrencyRate;
-    let ToCurrencyRate = this.props.BaseCurrency[CurrencyIdList].Rate;
-    let FromCurrencyScale = this.props.SelectedCurrencyScale;
-    let ToCurrencyScale = this.props.BaseCurrency[CurrencyIdList].Scale;
-    let ToInputValue = (+FromInputValue / FromCurrencyScale * FromCurrencyRate / ToCurrencyRate * ToCurrencyScale).toFixed(4);
-    this.setState({ ToInputValue: ToInputValue, FromInputValue: FromInputValue });
   }
 }
 

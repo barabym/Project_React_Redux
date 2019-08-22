@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import './About.styles.css';
+import './AboutPage.styles.css';
 
-class About extends Component {
+class AboutPage extends Component {
 
   render() {
 
@@ -14,4 +14,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default AboutPage;

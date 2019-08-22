@@ -1,23 +1,23 @@
 import axios, { } from "axios";
 import moment, { } from "moment";
 
-export function getArrRateArrDateCurrencyInRange(IdCurrency, StartDate, EndDate) {
+export function getArrRateArrDateCurrencyInRange(idCurrency, startDate, endDate) {
 
-  StartDate = moment(StartDate).format("YYYY-M-D");
-  EndDate = moment(EndDate).format("YYYY-M-D");
+  startDate = moment(startDate).format("YYYY-M-D");
+  endDate = moment(endDate).format("YYYY-M-D");
 
-  return axios.get(`http://www.nbrb.by/API/ExRates/Rates/Dynamics/${IdCurrency}?startDate=${StartDate}&endDate=${EndDate}`)
+  return axios.get(`http://www.nbrb.by/API/ExRates/Rates/Dynamics/${idCurrency}?startDate=${startDate}&endDate=${endDate}`)
 
-    .then((BaseCurrencyRange) => {
+    .then((baseCurrencyRange) => {
 
-      let BaseRangeDate = [];
-      let BaseRangeRate = [];
+      let baseRangeDate = [];
+      let baseRangeRate = [];
 
-      BaseCurrencyRange.data.forEach(element => {
-        BaseRangeDate.push(moment(element.Date).format("  DD MMM YYYY  "));
-        BaseRangeRate.push(element.Cur_OfficialRate);
+      baseCurrencyRange.data.forEach(element => {
+        baseRangeDate.push(moment(element.Date).format("  DD MMM YYYY  "));
+        baseRangeRate.push(element.Cur_OfficialRate);
       });
 
-      return [BaseRangeDate, BaseRangeRate];
+      return [baseRangeDate, baseRangeRate];
     })
 }

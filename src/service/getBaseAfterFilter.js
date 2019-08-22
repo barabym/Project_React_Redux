@@ -1,7 +1,13 @@
-export function getBaseAfterFilter(BaseItem, FilterWord) {
+export function getBaseAfterFilter(baseItem, filterWord) {
 
-	let BaseAfterFilter = BaseItem.filter((item) => {
-		return ~item.Abbr.indexOf(FilterWord.toUpperCase());
+
+	
+//занеси эту функцию внутрь компонента
+
+
+
+	let baseAfterFilter = baseItem.filter((item) => {
+		return ~item.Abbr.indexOf(filterWord.toUpperCase());
 	})
-	return BaseAfterFilter;
+	return baseAfterFilter;
 }

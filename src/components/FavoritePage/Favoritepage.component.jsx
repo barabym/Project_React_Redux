@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import './Favorite.styles.css';
+import './Favoritepage.styles.css';
 
-class Favorite extends Component {
+class FavoritePage extends Component {
 
   render() {
 
@@ -14,4 +14,4 @@ class Favorite extends Component {
   }
 }
 
-export default Favorite;
+export default FavoritePage;

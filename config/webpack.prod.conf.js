@@ -3,6 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base.conf')
 
+// BUILD config
+
 const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   plugins: [
