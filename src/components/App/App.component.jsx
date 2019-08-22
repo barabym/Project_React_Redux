@@ -3,54 +3,60 @@ import { Route } from 'react-router-dom';
 
 import './App.styles.css';
 
-import Menu from "../Menu/Menu.component.jsx";
-import Sidebar from "../Sidebar/Sidebar.component.jsx";
-import Content from "../Content/Content.component.jsx";
-import About from "../About/About.component.jsx";
-import Favorite from "../Favorite/Favorite.component.jsx";
+import Menu from "../Menu";
+import Sidebar from "../Sidebar";
+import Content from "../Content";
+import AboutPage from "../AboutPage";
+import FavoritePage from "../FavoritePage";
 
 import { getBaseCurrency } from "../../service/getBaseCurrency.js";
 
 class App extends Component {
 
-  state = {
-    BaseCurrency: [],
-    SelectedCurrency: [],
-  }
+
+  // state = {
+  //   baseCurrency: [],
+  //   selectedCurrency: [],
+  // }
 
   componentDidMount() {
+    // const { setBaseCurrency } = this.props.setBaseCurrency
     getBaseCurrency().then(response => {
-      this.setState({ BaseCurrency: response })
+      this.props.setBaseCurrency(response)
     });
+    // getBaseCurrency().then(response => {
+    //   this.setState({ baseCurrency: response })
+    // });
   }
+
+  // onClickSelectCurrency = (selectedCurrency) => {
+  //   this.setState({ selectedCurrency: selectedCurrency })
+  // }
 
   render() {
+    // const { stateApp } = this.props
     return (
+      // const { stateApp } = this.props
       <div className="app">
-        <Menu />
-        
-          <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
-            <>
-              <Sidebar
-                BaseCurrency={this.state.BaseCurrency}
-                IdSelectedCurrency={this.state.SelectedCurrency.ID}
-                onClickSelectCurrency={this.onClickSelectCurrency}
-              />
-              <Content
-                BaseCurrency={this.state.BaseCurrency}
-                SelectedCurrency={this.state.SelectedCurrency}
-              />
-            </>
-          )} />
-          <Route exact path="/about" render={() => (<About />)} />
-          <Route exact path="/favorite" render={() => (<Favorite />)} />
-        
+        {/* <Menu /> */}
+
+        <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
+          <>
+            <Sidebar
+            // baseCurrency={this.state.baseCurrency}
+            // idSelectedCurrency={this.state.selectedCurrency.ID}
+            // onClickSelectCurrency={this.onClickSelectCurrency}
+            />
+            {/* <Content
+              baseCurrency={this.state.baseCurrency}
+              selectedCurrency={this.state.selectedCurrency}
+            /> */}
+          </>
+        )} />
+        {/* <Route exact path="/about" render={() => (<AboutPage />)} /> */}
+        {/* <Route exact path="/favorite" render={() => (<FavoritePage />)} /> */}
       </div>
     );
-  }
-
-  onClickSelectCurrency = (SelectedCurrency) => {
-    this.setState({ SelectedCurrency: SelectedCurrency })
   }
 }
 

@@ -2,33 +2,34 @@ import React, { Component } from "react";
 
 import './Sidebar.styles.css';
 
-import Search from "../Search/Search.component.jsx";
-import ItemList from "../ItemList/ItemList.component.jsx";
+import Search from "../Search";
+import ItemList from "../ItemList";
 
 class Sidebar extends Component {
-  state = {
-    FilterWord: "",
-  }
+  // state = {
+  //   filterWord: "",
+  // }
+
+  // onClickSearchButton = (searchWord) => {
+  //   this.setState({ filterWord: searchWord });
+  // }
 
   render() {
-    // console.log("filterword" + this.state.FilterWord+"0");
+    console.log(this.props.appStore);
+    // console.log("filterword" + this.state.filterWord+"0");
     return (
       <div className="sidebar">
         <Search
-          onClickSearchButton={this.onClickSearchButton}
+          // onClickSearchButton={this.onClickSearchButton}
         />
         <ItemList
-          BaseItem={this.props.BaseCurrency}
-          FilterWord={this.state.FilterWord}
-          IdSelectedCurrency={this.props.IdSelectedCurrency}
-          onClickSelectCurrency={this.props.onClickSelectCurrency}
+          // baseItem={this.props.appStore}
+          // filterWord={this.state.filterWord}
+          // idSelectedCurrency={this.props.idSelectedCurrency}
+          // onClickSelectCurrency={this.props.onClickSelectCurrency}
         />
       </div>
-    );
-  }
-
-  onClickSearchButton = (SearchWord) => {
-    this.setState({ FilterWord: SearchWord });
+    )
   }
 }
 

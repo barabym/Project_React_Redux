@@ -1,2 +1,2 @@
-import Sidebar from './Sidebar.component.jsx'
+import Sidebar from './Sidebar.container'
 export default Sidebar
