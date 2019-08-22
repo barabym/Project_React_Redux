@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 import { setValueInputFromCurrencyToStore, setIdDropListCurrencyToStore } from "../../action/converter.action";
+import { setListFavoriteToStore } from "../../action/general.action";
 
 import Content from "./Content.component.jsx"
 
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setValueInputFromCurrencyToStore: (valueInputFromCurrency) => dispatch(setValueInputFromCurrencyToStore(valueInputFromCurrency)),
     setIdDropListCurrencyToStore: (idDropListCurrency) => dispatch(setIdDropListCurrencyToStore(idDropListCurrency)),
+    setListFavoriteToStore: (listFavorite) => dispatch(setListFavoriteToStore(listFavorite)),
   }
 }
 

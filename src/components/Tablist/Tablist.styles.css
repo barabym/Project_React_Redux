@@ -1,0 +1,29 @@
+.tablist__wrapper{
+  height: 50px;
+  margin-top: 130px;
+  border: 2px rgb(0, 255, 13) solid;
+  box-sizing: border-box;
+}
+
+.tablist {
+  /* height: 100vh; */
+  /* box-sizing: border-box; */
+  /* padding: 15px; */
+  display: flex;
+  /* flex-direction: column; */
+  /* flex: 1 1 35%; */
+  border: 2px red solid;
+  /* transform: rotate(-90deg); */
+  /* transform-origin: right top; */
+  /* width: 50px; */
+  /* position: relative; */
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.tab{
+  box-sizing: border-box;
+  border: 2px blue solid;
+  height: 42px;
+  /* width: 80px; */
+  /* flex: 1 0 10%; */
+}

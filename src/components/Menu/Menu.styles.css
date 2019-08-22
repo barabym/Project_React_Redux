@@ -29,3 +29,7 @@ ul {
 .menu li+li {
   border-left: 3px solid #424242;
 }
+
+.number-Favorite{
+  color: red;
+}

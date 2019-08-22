@@ -1,6 +1,7 @@
 const initialState = {
   baseCurrency: [],
   selectedCurrency: {},
+  listFavorite: [],
 };
 
 export const generalReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ export const generalReducer = (state = initialState, action) => {
       return { ...state, baseCurrency: action.payload }
     case "set_selectedCurrency":
       return { ...state, selectedCurrency: action.payload }
+    case "set_listFavorite":
+      return { ...state, listFavorite: action.payload }
     default:
       return state;
   }

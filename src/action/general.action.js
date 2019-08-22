@@ -11,3 +11,10 @@ export function setSelectedCurrencyToStore(selectedCurrency) {
     payload: selectedCurrency
   }
 }
+
+export function setListFavoriteToStore(listFavorite) {
+  return {
+    type: "set_listFavorite",
+    payload: listFavorite
+  }
+}
