@@ -1,19 +1,19 @@
 import { connect } from "react-redux"
-import { setFilterWord, setSelectedCurrency } from "../../action/sidebar.action";
+import { setBaseCurrencyToStore, setFilterWordToStore, setSelectedCurrencyToStore } from "../../action/sidebar.action";
 
 import Sidebar from "./Sidebar.component.jsx"
 
 const mapStatetoProps = (store) => {
   return {
-    appStore: store.appStore,
     sidebarStore: store.sidebarStore,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFilterWord: (filterWord) => dispatch(setFilterWord(filterWord)),
-    setSelectedCurrency: (selectedCurrency) => dispatch(setSelectedCurrency(selectedCurrency)),
+    setBaseCurrencyToStore: (baseCurrency) => dispatch(setBaseCurrencyToStore(baseCurrency)),
+    setFilterWordToStore: (filterWord) => dispatch(setFilterWordToStore(filterWord)),
+    setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
   }
 }
 

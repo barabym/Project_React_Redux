@@ -5,28 +5,36 @@ import './Sidebar.styles.css';
 import Search from "../Search";
 import ItemList from "../ItemList";
 
-class Sidebar extends Component {
-  // state = {
-  //   filterWord: "",
-  // }
+import { getBaseCurrency } from "../../service/getBaseCurrency.js";
 
-  // onClickSearchButton = (searchWord) => {
-  //   this.setState({ filterWord: searchWord });
-  // }
+class Sidebar extends Component {
+
+  componentDidMount() {
+    getBaseCurrency().then(response => {
+      this.props.setBaseCurrencyToStore(response)
+    });
+  }
+
+  onClickSearchButton = (searchWord) => {
+    this.props.setFilterWordToStore(searchWord);
+  }
+
+  onClickSelectCurrencyItem = (selectedCurrency) => {
+    this.props.setSelectedCurrencyToStore(selectedCurrency)
+  }
 
   render() {
-    console.log(this.props.appStore);
-    // console.log("filterword" + this.state.filterWord+"0");
+    const { sidebarStore } = this.props;
     return (
       <div className="sidebar">
         <Search
-          // onClickSearchButton={this.onClickSearchButton}
+          onClickSearchButton={this.onClickSearchButton}
         />
         <ItemList
-          // baseItem={this.props.appStore}
-          // filterWord={this.state.filterWord}
-          // idSelectedCurrency={this.props.idSelectedCurrency}
-          // onClickSelectCurrency={this.props.onClickSelectCurrency}
+          baseItem={sidebarStore.baseCurrency}
+          filterWord={sidebarStore.filterWord}
+          idSelectedCurrency={sidebarStore.selectedCurrency.ID}
+          onClickSelectCurrencyItem={this.onClickSelectCurrencyItem}
         />
       </div>
     )

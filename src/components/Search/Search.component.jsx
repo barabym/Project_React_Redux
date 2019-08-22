@@ -3,28 +3,32 @@ import React, { Component } from "react";
 import './Search.styles.css';
 
 function Search__input(props) {
-
   return (
     <input type="search" className="search__input" onChange={props.onChangeSearchInput} placeholder=" Search currency..."></input>
   );
 }
 
 function Search__button(props) {
-
   return (
     <button className="search__button" onClick={props.onClickSearchButton}>Search</button>
   );
 }
 
 class Search extends Component {
+
   state = {
-    SearchWord: "",
+    searchWord: "",
   }
 
+  onClickSearchButton = () => {
+    this.props.onClickSearchButton(this.state.searchWord);
+  }
 
-  // componentDidUpdate() {
-  //     if (!this.state.SearchWord) { this.props.onClickSearchButton("") }
-  // }
+  onChangeSearchInput = (e) => {
+    this.setState({ searchWord: e.target.value });
+    if (!e.target.value) { this.props.onClickSearchButton("") }
+    
+  }
 
   render() {
     return (
@@ -36,18 +40,8 @@ class Search extends Component {
           onClickSearchButton={this.onClickSearchButton}
         />
       </div>
-    );
+    )
   }
-
-  onClickSearchButton = () => {
-    this.props.onClickSearchButton(this.state.SearchWord);
-  }
-
-  onChangeSearchInput = (e) => {
-    this.setState({ SearchWord: e.target.value });
-    if (!e.target.value) { this.props.onClickSearchButton("") }
-    // if (!e.target.value) { this.onClickSearchButton() }
-  };
 }
 
 export default Search;

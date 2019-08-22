@@ -1,47 +1,58 @@
 import React, { Component } from "react";
 import { Line } from 'react-chartjs-2';
 import moment, { } from "moment";
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import Datepicker from "../Datepicker/Datepicker.component.jsx";
+import Datepicker from "../Datepicker";
 
 import './Chart.styles.css';
 
 import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
 
-class Chart extends Component {
+class  Chart extends Component {
 
   state = {
-    BaseRangeDate: [],
-    BaseRangeRate: [],
-    FromDate: new Date().setDate(new Date().getDate() - 14),
-    EndDate: new Date(),
+    baseRangeDate: [],
+    baseRangeRate: [],
+    fromDate: new Date().setDate(new Date().getDate() - 14),
+    endDate: new Date(),
   }
 
   componentDidMount() {
 
-    if (this.props.SelectedCurrencyID) {
-      getArrRateArrDateCurrencyInRange(this.props.SelectedCurrencyID, this.state.FromDate, this.state.EndDate)
+    if (this.props.selectedCurrencyID) {
+      getArrRateArrDateCurrencyInRange(this.props.selectedCurrencyID, this.state.fromDate, this.state.endDate)
         .then(response => {
-          this.setState({ BaseRangeDate: response[0], BaseRangeRate: response[1] })
+          this.setState({ baseRangeDate: response[0], baseRangeRate: response[1] })
         });
     }
   }
 
   componentDidUpdate(prevProps, PrevState) {
 
-    if (prevProps.SelectedCurrencyID !== this.props.SelectedCurrencyID || PrevState.FromDate !== this.state.FromDate || PrevState.EndDate !== this.state.EndDate) {
-      getArrRateArrDateCurrencyInRange(this.props.SelectedCurrencyID, this.state.FromDate, this.state.EndDate)
+    if (prevProps.selectedCurrencyID !== this.props.selectedCurrencyID || PrevState.fromDate !== this.state.fromDate || PrevState.endDate !== this.state.endDate) {
+      getArrRateArrDateCurrencyInRange(this.props.selectedCurrencyID, this.state.fromDate, this.state.endDate)
         .then(response => {
-          this.setState({ BaseRangeDate: response[0], BaseRangeRate: response[1] })
+          this.setState({ baseRangeDate: response[0], baseRangeRate: response[1] })
         });
     }
+  }
+
+  onChangeFromDate = (date) => {
+    this.setState({
+      fromDate: date
+    });
+  }
+  onChangeEndDate = (date) => {
+    this.setState({
+      endDate: date
+    });
   }
 
   render() {
 
     const data = {
-      labels: this.state.BaseRangeDate,
+      labels: this.state.baseRangeDate,
 
       datasets: [
         {
@@ -64,7 +75,7 @@ class Chart extends Component {
           pointHoverBorderWidth: 2,
           // pointRadius: 1,
           pointHitRadius: 1,
-          data: this.state.BaseRangeRate,
+          data: this.state.baseRangeRate,
         }
       ]
     }
@@ -124,24 +135,21 @@ class Chart extends Component {
     }
 
     return (
-
       <>
-        <Switch>
-          <Route exact path={["/", "/currensies"]} render={() => (
-            <div className="chart__wrapper-for-datepicker">
-              <Datepicker
-                title={"From date:"}
-                startDate={this.state.FromDate}
-                onChange={this.onChangeFromDate}
-              />
-              <Datepicker
-                title={"End date:"}
-                startDate={this.state.EndDate}
-                onChange={this.onChangeEndDate}
-              />
-            </div>
-          )} />
-        </Switch>
+        <Route exact path={["/", "/currensies"]} render={() => (
+          <div className="chart__wrapper-for-datepicker">
+            <Datepicker
+              title={"From date:"}
+              startDate={this.state.fromDate}
+              onChange={this.onChangeFromDate}
+            />
+            <Datepicker
+              title={"End date:"}
+              startDate={this.state.endDate}
+              onChange={this.onChangeEndDate}
+            />
+          </div>
+        )} />
 
         <div className="chart__wrapper">
           <Line
@@ -151,17 +159,6 @@ class Chart extends Component {
         </div>
       </>
     );
-  }
-
-  onChangeFromDate = (date) => {
-    this.setState({
-      FromDate: date
-    });
-  }
-  onChangeEndDate = (date) => {
-    this.setState({
-      EndDate: date
-    });
   }
 }
 export default Chart;
