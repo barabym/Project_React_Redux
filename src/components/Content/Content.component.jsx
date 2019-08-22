@@ -150,7 +150,7 @@ class Content extends Component {
             <div className="content">
               <Converter
                 valueInputTo={this.convertCurrency()}
-                onChangeFromInputValue={this.onChangeFromInputValue}
+                // onChangeFromInputValue={this.onChangeFromInputValue}
               />
               <Chart
                 onChangeFromDate={this.onChangeFromDate}

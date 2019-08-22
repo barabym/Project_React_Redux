@@ -15,19 +15,33 @@ const mapStatetoProps = (store) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
-    setBaseCurrencyToStore: (baseCurrency) => dispatch(setBaseCurrencyToStore(baseCurrency)),
-    setListFavoriteToStore: (listFavorite) => dispatch(setListFavoriteToStore(listFavorite)),
-    setBaseRangeToStore: (baseRange) => dispatch(setBaseRangeToStore(baseRange)),
-    setFromDateToStore: (fromDate) => dispatch(setFromDateToStore(fromDate)),
-    setEndDateToStore: (endDate) => dispatch(setEndDateToStore(endDate)),
-    setFavoriteSelectedCurrencyToStore: (favoriteSelectedCurrency) => dispatch(setFavoriteSelectedCurrencyToStore(favoriteSelectedCurrency)),
-    setFavoriteBaseRangeToStore: (favoriteBaseRange) => dispatch(setFavoriteBaseRangeToStore(favoriteBaseRange)),
-    setFavoriteFromDateToStore: (favoriteFromDate) => dispatch(setFavoriteFromDateToStore(favoriteFromDate)),
-    setFavoriteEndDateToStore: (favoriteEndDate) => dispatch(setFavoriteEndDateToStore(favoriteEndDate)),
-  }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
+//     setBaseCurrencyToStore: (baseCurrency) => dispatch(setBaseCurrencyToStore(baseCurrency)),
+//     setListFavoriteToStore: (listFavorite) => dispatch(setListFavoriteToStore(listFavorite)),
+//     setBaseRangeToStore: (baseRange) => dispatch(setBaseRangeToStore(baseRange)),
+//     setFromDateToStore: (fromDate) => dispatch(setFromDateToStore(fromDate)),
+//     setEndDateToStore: (endDate) => dispatch(setEndDateToStore(endDate)),
+//     setFavoriteSelectedCurrencyToStore: (favoriteSelectedCurrency) => dispatch(setFavoriteSelectedCurrencyToStore(favoriteSelectedCurrency)),
+//     setFavoriteBaseRangeToStore: (favoriteBaseRange) => dispatch(setFavoriteBaseRangeToStore(favoriteBaseRange)),
+//     setFavoriteFromDateToStore: (favoriteFromDate) => dispatch(setFavoriteFromDateToStore(favoriteFromDate)),
+//     setFavoriteEndDateToStore: (favoriteEndDate) => dispatch(setFavoriteEndDateToStore(favoriteEndDate)),
+//   }
+// }
+
+const mapDispatchToProps = {
+
+  setSelectedCurrencyToStore,
+  setBaseCurrencyToStore,
+  setListFavoriteToStore,
+  setBaseRangeToStore,
+  setFromDateToStore,
+  setEndDateToStore,
+  setFavoriteSelectedCurrencyToStore,
+  setFavoriteBaseRangeToStore,
+  setFavoriteFromDateToStore,
+  setFavoriteEndDateToStore,
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Content)

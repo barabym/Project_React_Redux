@@ -11,10 +11,15 @@ const mapStatetoProps = (store) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setIdDropListCurrencyToStore: (idDropListCurrency) => dispatch(setIdDropListCurrencyToStore(idDropListCurrency)),
-  }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setIdDropListCurrencyToStore: (idDropListCurrency) => dispatch(setIdDropListCurrencyToStore(idDropListCurrency)),
+//   }
+// }
+
+const mapDispatchToProps = {
+  
+  setIdDropListCurrencyToStore,
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Droplist)

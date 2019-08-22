@@ -11,10 +11,15 @@ const mapStatetoProps = (store) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setValueInputFromCurrencyToStore: (valueInputFromCurrency) => dispatch(setValueInputFromCurrencyToStore(valueInputFromCurrency)),
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setValueInputFromCurrencyToStore: (valueInputFromCurrency) => dispatch(setValueInputFromCurrencyToStore(valueInputFromCurrency)),
+//   }
+// }
+
+const mapDispatchToProps = {
+  
+  setValueInputFromCurrencyToStore,
   }
-}
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Converter)

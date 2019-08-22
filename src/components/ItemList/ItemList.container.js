@@ -11,10 +11,15 @@ const mapStatetoProps = (store) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
-  }
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
+//   }
+// }
+
+const mapDispatchToProps = {
+
+  setSelectedCurrencyToStore,
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ItemList)
