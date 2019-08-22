@@ -16,6 +16,10 @@ import { getBaseAfterFilter } from "../../service/getBaseAfterFilter.js";
 
 class Content extends Component {
 
+  componentWillMount() {
+    if (!JSON.parse(localStorage.getItem('listFavorite'))) localStorage.setItem('listFavorite', JSON.stringify([]));
+  }
+
   componentDidMount() {
     // alert("Создание");
     // alert (!this.props.generalStore.baseCurrency[0]);
@@ -29,10 +33,11 @@ class Content extends Component {
     // } else console.log(this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr);
     // };
     if (!this.props.generalStore.baseCurrency[0]) {
-      getBaseCurrency().then(response => {
-        this.props.setBaseCurrencyToStore(response);
-        this.props.setSelectedCurrencyToStore(response[0]);
-      });
+      getBaseCurrency()
+        .then(response => {
+          this.props.setBaseCurrencyToStore(response);
+          this.props.setSelectedCurrencyToStore(response[0]);
+        });
     }
     // getBaseCurrency().then(response => {
     //   if (!this.props.generalStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
@@ -48,11 +53,14 @@ class Content extends Component {
     // alert(this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr);
     // console.log(this.props.generalStore.listFavorite);
     // console.log(this.props.generalStore.baseCurrency.length);
-    console.log(this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr);
+    // console.log(this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr);
 
     if (this.props.generalStore.baseCurrency.length && this.props.generalStore.listFavorite.length && !this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr) {
       // console.log("Стор неравен нулю");
       // console.log(this.props.generalStore.baseCurrency);
+
+      // console.log("Нука: " + this.props.generalStore.listFavorite[0]);
+
       let selectedCurrency = getBaseAfterFilter(this.props.generalStore.baseCurrency, this.props.generalStore.listFavorite[0]);
       // console.log(selectedCurrency);
       // console.log(selectedCurrency[0]);
@@ -70,7 +78,7 @@ class Content extends Component {
         });
     }
 
-    if (prevProps.favoriteChartStore.favoriteSelectedCurrency.ID !== this.props.favoriteChartStore.favoriteSelectedCurrency.ID || prevProps.favoriteChartStore.favoriteFromDate !== this.props.favoriteChartStore.favoriteFromDate || prevProps.favoriteChartStore.favoriteEndDate !== this.props.favoriteChartStore.favoriteEndDate) {
+    if (this.props.favoriteChartStore.favoriteSelectedCurrency.ID && (prevProps.favoriteChartStore.favoriteSelectedCurrency.ID !== this.props.favoriteChartStore.favoriteSelectedCurrency.ID || prevProps.favoriteChartStore.favoriteFromDate !== this.props.favoriteChartStore.favoriteFromDate || prevProps.favoriteChartStore.favoriteEndDate !== this.props.favoriteChartStore.favoriteEndDate)) {
       // alert (this.props.generalStore.selectedCurrency.ID);
       getArrRateAndArrDateCurrencyInRange(this.props.favoriteChartStore.favoriteSelectedCurrency.ID, this.props.favoriteChartStore.favoriteFromDate, this.props.favoriteChartStore.favoriteEndDate)
         .then(response => {
@@ -104,7 +112,7 @@ class Content extends Component {
     this.props.setFavoriteEndDateToStore(date)
   }
 
-  onClickAddFavorite = () => {
+  onClickAddFavoriteCurrency = () => {
     let abbr = this.props.generalStore.selectedCurrency.Abbr;
     let listFavorite = this.props.generalStore.listFavorite;
     if (listFavorite.indexOf(abbr) < 0) {
@@ -123,6 +131,9 @@ class Content extends Component {
     // console.log(this.props.favoriteChartStore.favoriteSelectedCurrency);
     if (abbr == this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr) {
       this.props.setFavoriteSelectedCurrencyToStore({});
+    };
+    if (!listFavorite.length) {
+      this.props.setFavoriteBaseRangeToStore([[], []]);
     };
     // console.log(this.props.favoriteChartStore.favoriteSelectedCurrency);
   }
@@ -150,7 +161,7 @@ class Content extends Component {
   }
 
   render() {
-    const { generalStore, converterStore } = this.props;
+    const { generalStore, converterStore, chartStore, favoriteChartStore } = this.props;
 
     let valueInputTo = this.convertCurrency();
 
@@ -168,16 +179,16 @@ class Content extends Component {
             />
             <div className="content">
               <Button
-                onClickButton={this.onClickAddFavorite}
+                onClickButton={this.onClickAddFavoriteCurrency}
               />
               <Chart
                 flagDatePickersIsShow={true}
                 onChangeFromDate={this.onChangeFromDate}
                 onChangeEndDate={this.onChangeEndDate}
-                fromDate={this.props.chartStore.fromDate}
-                endDate={this.props.chartStore.endDate}
-                rangeDate={this.props.chartStore.baseRangeDate}
-                rangeRate={this.props.chartStore.baseRangeRate}
+                fromDate={chartStore.fromDate}
+                endDate={chartStore.endDate}
+                rangeDate={chartStore.baseRangeDate}
+                rangeRate={chartStore.baseRangeRate}
               // aaa={this.props.generalStore.selectedCurrency.ID}
               />
             </div>
@@ -202,10 +213,10 @@ class Content extends Component {
               <Chart
                 onChangeFromDate={this.onChangeFromDate}
                 onChangeEndDate={this.onChangeEndDate}
-                fromDate={this.props.chartStore.fromDate}
-                endDate={this.props.chartStore.endDate}
-                rangeDate={this.props.chartStore.baseRangeDate}
-                rangeRate={this.props.chartStore.baseRangeRate}
+                fromDate={chartStore.fromDate}
+                endDate={chartStore.endDate}
+                rangeDate={chartStore.baseRangeDate}
+                rangeRate={chartStore.baseRangeRate}
               />
             </div>
           </>
@@ -235,20 +246,20 @@ class Content extends Component {
                 listFavorite={this.props.generalStore.listFavorite}
                 onClickDelTab={this.onClickDelFavoriteCurrency}
                 onClickTab={this.onClickFavoriteSelectCurrencyTab}
-                selectedCurrencyAbbr={this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr ? this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr : ""}
+                selectedCurrencyAbbr={favoriteChartStore.favoriteSelectedCurrency.Abbr ? favoriteChartStore.favoriteSelectedCurrency.Abbr : ""}
               />
               <div className="chart-favorite-wrapper">
                 <Chart
                   flagDescriptionIsShow={true}
                   flagDatePickersIsShow={true}
-                  currencyName={this.props.favoriteChartStore.favoriteSelectedCurrency.EngName ? this.props.favoriteChartStore.favoriteSelectedCurrency.EngName : ""}
-                  currencyAbbreviation={this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr ? this.props.favoriteChartStore.favoriteSelectedCurrency.Abbr : ""}
+                  currencyName={favoriteChartStore.favoriteSelectedCurrency.EngName ? favoriteChartStore.favoriteSelectedCurrency.EngName : ""}
+                  currencyAbbreviation={favoriteChartStore.favoriteSelectedCurrency.Abbr ? favoriteChartStore.favoriteSelectedCurrency.Abbr : ""}
                   onChangeFromDate={this.onChangeFavoriteFromDate}
                   onChangeEndDate={this.onChangeFavoriteEndDate}
-                  fromDate={this.props.favoriteChartStore.favoriteFromDate}
-                  endDate={this.props.favoriteChartStore.favoriteEndDate}
-                  rangeDate={this.props.favoriteChartStore.favoriteBaseRangeDate}
-                  rangeRate={this.props.favoriteChartStore.favoriteBaseRangeRate}
+                  fromDate={favoriteChartStore.favoriteFromDate}
+                  endDate={favoriteChartStore.favoriteEndDate}
+                  rangeDate={favoriteChartStore.favoriteBaseRangeDate}
+                  rangeRate={favoriteChartStore.favoriteBaseRangeRate}
                 />
               </div>
             </div>
