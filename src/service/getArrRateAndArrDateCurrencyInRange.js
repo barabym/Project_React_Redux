@@ -1,7 +1,7 @@
 import axios, { } from "axios";
 import moment, { } from "moment";
 
-export function getArrRateArrDateCurrencyInRange(idCurrency, startDate, endDate) {
+export function getArrRateAndArrDateCurrencyInRange(idCurrency, startDate, endDate) {
 // alert (idCurrency+" "+startDate+" "+endDate);
   startDate = moment(startDate).format("YYYY-M-D");
   endDate = moment(endDate).format("YYYY-M-D");

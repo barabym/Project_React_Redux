@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.conf.js --open",
     "dev": "webpack --config ./config/webpack.dev.conf.js",
-    "pr od": "webpack --config ./config/webpack.prod.conf.js"
+    "prod": "webpack --config ./config/webpack.prod.conf.js"
   },
   "browserslist": [
     "> 1%",

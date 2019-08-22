@@ -11,7 +11,7 @@ import AboutPage from "../AboutPage";
 import Tablist from "../Tablist";
 
 import { getBaseCurrency } from "../../service/getBaseCurrency.js";
-import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
+import { getArrRateAndArrDateCurrencyInRange } from "../../service/getArrRateAndArrDateCurrencyInRange.js";
 import { getBaseAfterFilter } from "../../service/getBaseAfterFilter.js";
 
 class Content extends Component {
@@ -63,7 +63,7 @@ class Content extends Component {
 
     if (prevProps.generalStore.selectedCurrency.ID !== this.props.generalStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
       // alert (this.props.generalStore.selectedCurrency.ID);
-      getArrRateArrDateCurrencyInRange(this.props.generalStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
+      getArrRateAndArrDateCurrencyInRange(this.props.generalStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
         .then(response => {
           // alert(response+"!!!!!!!!!!!!");
           this.props.setBaseRangeToStore(response);
@@ -72,7 +72,7 @@ class Content extends Component {
 
     if (prevProps.favoriteChartStore.favoriteSelectedCurrency.ID !== this.props.favoriteChartStore.favoriteSelectedCurrency.ID || prevProps.favoriteChartStore.favoriteFromDate !== this.props.favoriteChartStore.favoriteFromDate || prevProps.favoriteChartStore.favoriteEndDate !== this.props.favoriteChartStore.favoriteEndDate) {
       // alert (this.props.generalStore.selectedCurrency.ID);
-      getArrRateArrDateCurrencyInRange(this.props.favoriteChartStore.favoriteSelectedCurrency.ID, this.props.favoriteChartStore.favoriteFromDate, this.props.favoriteChartStore.favoriteEndDate)
+      getArrRateAndArrDateCurrencyInRange(this.props.favoriteChartStore.favoriteSelectedCurrency.ID, this.props.favoriteChartStore.favoriteFromDate, this.props.favoriteChartStore.favoriteEndDate)
         .then(response => {
           // alert(response+"!!!!!!!!!!!!");
           this.props.setFavoriteBaseRangeToStore(response);
