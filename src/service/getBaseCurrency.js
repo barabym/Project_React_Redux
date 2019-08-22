@@ -8,8 +8,15 @@ export function getBaseCurrency() {
   return Promise.all([
     axios.get(`http://www.nbrb.by/API/ExRates/Rates?Periodicity=0`),
     axios.get(`http://www.nbrb.by/API/ExRates/Rates?onDate=${dateYesterday}&Periodicity=0`),
+    axios.get(`http://www.nbrb.by/API/ExRates/Currencies`),
   ])
-    .then(([baseCurrencyNow, baseCurrencyYesterday]) => {
+    .then(([baseCurrencyNow, baseCurrencyYesterday, baseCurrencyWithAbbr]) => {
+
+      let listCurrencyAbbr = {};
+      baseCurrencyWithAbbr.data.forEach(Obj => {
+        listCurrencyAbbr = { ...listCurrencyAbbr, [Obj.Cur_ID]: Obj.Cur_Name_Eng };
+      });
+
       const baseCurrencyForList = baseCurrencyNow.data.map((Obj, i) => {
         return {
           ID: Obj.Cur_ID,
@@ -18,9 +25,10 @@ export function getBaseCurrency() {
           Rate: Obj.Cur_OfficialRate,
           Diff: +(Obj.Cur_OfficialRate - baseCurrencyYesterday.data[i].Cur_OfficialRate).toFixed(4),
           SymbolCur: getSumbolCurr(Obj.Cur_Abbreviation),
+          EngName: listCurrencyAbbr[Obj.Cur_ID],
         }
       })
-      
+
       return baseCurrencyForList;
     })
 }

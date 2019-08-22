@@ -2,34 +2,29 @@ import React, { Component } from "react";
 
 import './Tablist.styles.css';
 
+function Tab(props) {
+  return (
+    <div className="tab">
+      <span>{props.tabName}</span>
+      <button className="button-del-tab" onClick={()=>{props.onClick(props.tabName)}}>X</button>
+    </div>
+  );
+}
+
 class Tablist extends Component {
 
   render() {
-
+    // let aaa = ["AAA", "SSS", "DDD", "FFF", "GGG", "HHH", "JJJ", "KKK", "LLL", "ZZZ", "XXX", "CCC", "VVV", "BBB", "NNN", "MMM"];
     return (
-      <div className="tablist__wrapper">
-        <div className="tablist">
-          <div className="tab">aaa</div>
-          <div className="tab">sss</div>
-          <div className="tab">ddd</div>
-          <div className="tab">fff</div>
-          <div className="tab">ggg</div>
-          <div className="tab">hhh</div>
-          <div className="tab">jjj</div>
-          <div className="tab">kkk</div>
-          <div className="tab">lll</div>
-          <div className="tab">zzz</div>
-          <div className="tab">aaa</div>
-          <div className="tab">sss</div>
-          <div className="tab">ddd</div>
-          <div className="tab">fff</div>
-          <div className="tab">ggg</div>
-          <div className="tab">hhh</div>
-          <div className="tab">jjj</div>
-          <div className="tab">kkk</div>
-          <div className="tab">lll</div>
-          <div className="tab">zzz</div>
-        </div>
+      <div className="tablist">
+        {this.props.listFavorite.map((item) => {
+          return (
+            <Tab
+              key={item}
+              tabName={item}
+              onClick={this.props.onClickDelTab}
+            />)
+        })}
       </div>
     );
   }

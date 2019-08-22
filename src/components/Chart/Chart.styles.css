@@ -12,15 +12,39 @@
   /* min-width: 0;
   min-height: 0; */
   /* margin: auto; */
-  height: calc(100vh-210px);
+  height: calc(100vh-220px);
   /* width: 60vw; */
   
 }
-.chart__wrapper-for-datepicker {
+.chart__wrapper-for-addition {
   /* height: 176px; */
-  padding: 0px 0 18px 0;
-  box-sizing: border-box;
+  padding: 7px 0 18px 0;
+  /* box-sizing: border-box; */
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.chart__description{
+  /* height: 100px; */
+  /* width: 162px; */
+  /* box-sizing: border-box; */
+  /* border: 1px solid white; */
+}
+
+.chart__description p{
+  margin: 0;
+}
+
+.chart__datepicker {
+  font-size: 1rem;
+  outline: none;
+  width: 150px;
+  padding: 3px 0 3px 8px;
+  border: 2px solid #424242;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px white;
+}
+
+.chart__datepicker-title {
+  margin: 0;
 }

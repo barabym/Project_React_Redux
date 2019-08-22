@@ -1,17 +1,48 @@
 import React, { Component } from "react";
 import { Line } from 'react-chartjs-2';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
-import Datepicker from "../Datepicker";
+import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
 
 import './Chart.styles.css';
 
-import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
+function Chart__description(props) {
+  if (props.flagDescriptionIsShow) {
+    return (
+      <div className="chart__description">
+        <p>Currency Name: American Dollar</p>
+        <p>Currency Abbreviation: USD</p>
+      </div>
+    );
+  }
+  else return null;
+}
+
+function Chart__datepicker(props) {
+  if (props.flagDatePickersIsShow) {
+    return (
+      <div>
+        <p className="chart__datepicker-title">{props.title}</p>
+        <DatePicker
+          selected={props.startDate}
+          onChange={props.onChange}
+          dateFormat="dd MMMM yyyy"
+          className="chart__datepicker"
+          // minDate={subDays(new Date(), 5)}
+          maxDate={new Date()}
+        />
+      </div>
+    );
+  }
+  else return null;
+}
 
 class Chart extends Component {
 
   componentDidMount() {
-    const { generalStore, chartStore, setBaseRangeToStore} = this.props;
+    const { generalStore, chartStore, setBaseRangeToStore } = this.props;
     if (generalStore.selectedCurrency.ID) {
       getArrRateArrDateCurrencyInRange(generalStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
         .then(response => {
@@ -124,21 +155,23 @@ class Chart extends Component {
 
     return (
       <>
-        <Route exact path={["/", "/currensies"]} render={() => (
-          <div className="chart__wrapper-for-datepicker">
-            <Datepicker
-              title={"From date:"}
-              startDate={this.props.chartStore.fromDate}
-              onChange={this.onChangeFromDate}
-            />
-            <Datepicker
-              title={"End date:"}
-              startDate={this.props.chartStore.endDate}
-              onChange={this.onChangeEndDate}
-            />
-          </div>
-        )} />
-
+        <div className="chart__wrapper-for-addition">
+          <Chart__description
+            flagDescriptionIsShow={this.props.flagDescriptionIsShow}
+          />
+          <Chart__datepicker
+            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
+            title={"From date:"}
+            startDate={this.props.chartStore.fromDate}
+            onChange={this.onChangeFromDate}
+          />
+          <Chart__datepicker
+            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
+            title={"End date:"}
+            startDate={this.props.chartStore.endDate}
+            onChange={this.onChangeEndDate}
+          />
+        </div>
         <div className="chart__wrapper">
           <Line
             data={data}

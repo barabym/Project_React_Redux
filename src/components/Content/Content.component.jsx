@@ -8,15 +8,21 @@ import Converter from "../Converter";
 import Chart from "../Chart";
 import Button from "../Button";
 import AboutPage from "../AboutPage";
-import FavoritePage from "../FavoritePage";
 import Tablist from "../Tablist";
+
+import { getBaseCurrency } from "../../service/getBaseCurrency.js";
 
 class Content extends Component {
 
   componentDidMount() {
+    // alert (this.props.generalStore.selectedCurrency.ID);
     if (localStorage.getItem('listFavorite')) {
       this.props.setListFavoriteToStore(JSON.parse(localStorage.getItem('listFavorite')))
     };
+    getBaseCurrency().then(response => {
+      if (!this.props.generalStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
+      if (!this.props.generalStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
+    });
   }
 
   onChangeFromInputValue = (value) => {
@@ -28,13 +34,20 @@ class Content extends Component {
   }
 
   onClickAddFavorite = () => {
-    let id = this.props.generalStore.selectedCurrency.ID;
+    let abbr = this.props.generalStore.selectedCurrency.Abbr;
     let listFavorite = this.props.generalStore.listFavorite;
-    if (listFavorite.indexOf(id) < 0) {
-      let newLictFavorite = listFavorite.concat(id);
-      this.props.setListFavoriteToStore(newLictFavorite);
-      localStorage.setItem('listFavorite', JSON.stringify(newLictFavorite))
+    if (listFavorite.indexOf(abbr) < 0) {
+      let newListFavorite = listFavorite.concat(abbr);
+      this.props.setListFavoriteToStore(newListFavorite);
+      localStorage.setItem('listFavorite', JSON.stringify(newListFavorite))
     }
+  }
+
+  onClickDelFavorite = (abbr) => {
+    let listFavorite = this.props.generalStore.listFavorite;
+    listFavorite.splice(listFavorite.indexOf(abbr), 1);
+    this.props.setListFavoriteToStore(listFavorite);
+    localStorage.setItem('listFavorite', JSON.stringify(listFavorite))
   }
 
   convertCurrency = () => {
@@ -57,6 +70,7 @@ class Content extends Component {
 
     let selectedCurrencyAbbr = generalStore.selectedCurrency.Abbr ? generalStore.selectedCurrency.Abbr :
       generalStore.baseCurrency[0] ? generalStore.baseCurrency[0].Abbr : "";
+
     let dropListAbbr = generalStore.baseCurrency[0] ? generalStore.baseCurrency[converterStore.idDropListCurrency].Abbr : "";
 
     return (
@@ -68,9 +82,11 @@ class Content extends Component {
             />
             <div className="content">
               <Button
-                onClickAddFavorite={this.onClickAddFavorite}
+                onClickButton={this.onClickAddFavorite}
               />
-              <Chart />
+              <Chart
+                flagDatePickersIsShow={true}
+              />
             </div>
           </>
         )} />
@@ -115,8 +131,16 @@ class Content extends Component {
             />
             <div className="content">
               {/* <FavoritePage /> */}
-              <Tablist />
-              <Chart />
+              <Tablist
+                listFavorite={this.props.generalStore.listFavorite}
+                onClickDelTab={this.onClickDelFavorite}
+              />
+              <div className="chart-favorite-wrapper">
+                <Chart
+                  flagDescriptionIsShow={true}
+                  flagDatePickersIsShow={true}
+                />
+              </div>
             </div>
 
           </>
