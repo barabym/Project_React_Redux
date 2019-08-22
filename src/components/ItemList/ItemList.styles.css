@@ -1,0 +1,75 @@
+.item-list__item {
+  padding: 10px 0px;
+  outline: 1px solid white;
+  outline-offset: -3px;
+  cursor: pointer;
+  display: flex;
+}
+
+.item-list__item_selected {
+  background: rgba(0, 170, 255, 1);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #424242;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px white inset;
+  flex: 1 1;
+}
+
+.item-list__header {
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0px 0px 3px white inset;
+  border-bottom: 2px solid #424242;
+  display: flex;
+  padding-right: 11px;
+  color: white;
+  text-align: center;
+}
+
+.item-list__header-box {
+  width: 25%;
+  box-sizing: border-box;
+}
+
+.item-list__body {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0px 0px 3px white inset;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+}
+
+.item-list__body::-webkit-scrollbar-button {
+  width: 11px;
+  height: 0px;
+  background-color: rgb(0, 170, 255);
+  border-radius: 5px;
+}
+
+.item-list__body::-webkit-scrollbar-track {
+  background-color: #2D2D2D;
+  box-shadow: 0px 0px 3px white inset;
+  border-radius: 0 0 15px 0;
+}
+
+.item-list__body::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 170, 255);
+  box-shadow: 0px 0px 3px #fff inset;
+  border-radius: 0 0 15px 0;
+}
+
+.item-list__body::-webkit-resizer {
+  width: 11px;
+  height: 11px
+}
+
+.item-list__body::-webkit-scrollbar {
+  width: 11px;
+}

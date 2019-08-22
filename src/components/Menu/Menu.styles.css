@@ -1,0 +1,26 @@
+ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu {
+  background: rgba(255, 255, 255, 0);
+  position: absolute;
+  margin-top: 23px;
+  margin-left: 35%;
+  width: 65%;
+}
+
+.menu li {
+  display: inline-block;
+  padding: 0 25px;
+}
+
+.menu a {
+  color: white;
+}
+
+.menu li+li {
+  border-left: 3px solid #424242;
+}

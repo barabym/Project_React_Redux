@@ -1,0 +1,44 @@
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.converter {
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.converter__warrper-for-string {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.converter__text {
+  width: 100px;
+  margin: 10px;
+  padding-bottom: 4px;
+}
+
+.converter__text_select {
+  padding: 0px;
+  margin: 10px 15px 10px 5px;
+}
+
+.converter__input {
+  font-size: 1.25rem;
+  outline: none;
+  width: 150px;
+  margin: 10px;
+  padding: 0px 0 0px 8px;
+  border: 2px solid #424242;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px white;
+}
