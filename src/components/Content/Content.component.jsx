@@ -9,8 +9,7 @@ import Button from "../Button";
 import AboutPage from "../AboutPage";
 import Tablist from "../Tablist";
 
-import { getBaseCurrency } from "../../service/getBaseCurrency.js";
-import { getArrRateAndArrDateCurrencyInRange } from "../../service/getArrRateAndArrDateCurrencyInRange.js";
+// import { getArrRateAndArrDateCurrencyInRange } from "../../service/getArrRateAndArrDateCurrencyInRange.js";
 import { getBaseAfterFilter } from "../../service/getBaseAfterFilter.js";
 
 class Content extends Component {
@@ -25,39 +24,25 @@ class Content extends Component {
     this.props.setListFavoriteToStore(JSON.parse(localStorage.getItem('listFavorite')));
 
     if (!this.props.generalStore.baseCurrency[0]) {
-
-      getBaseCurrency()
-        .then(response => {
-          this.props.setBaseCurrencyToStore(response);
-          this.props.setSelectedCurrencyToStore(response[0]);
-        });
+      this.props.setBaseCurrencyToStore()
     }
-
   }
 
   componentDidUpdate(prevProps, PrevState) {
+    
     const { generalStore, chartStore, favoriteChartStore } = this.props;
 
     if (generalStore.baseCurrency.length && generalStore.listFavorite.length && !favoriteChartStore.favoriteSelectedCurrency.Abbr) {
-
       let selectedCurrency = getBaseAfterFilter(generalStore.baseCurrency, generalStore.listFavorite[0]);
       this.props.setFavoriteSelectedCurrencyToStore(selectedCurrency[0]);
     }
 
     if (prevProps.generalStore.selectedCurrency.ID !== generalStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== chartStore.fromDate || prevProps.chartStore.endDate !== chartStore.endDate) {
-
-      getArrRateAndArrDateCurrencyInRange(generalStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
-        .then(response => {
-          this.props.setBaseRangeToStore(response);
-        });
+      this.props.setBaseRangeToStore(generalStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
     }
 
     if (favoriteChartStore.favoriteSelectedCurrency.ID && (prevProps.favoriteChartStore.favoriteSelectedCurrency.ID !== favoriteChartStore.favoriteSelectedCurrency.ID || prevProps.favoriteChartStore.favoriteFromDate !== favoriteChartStore.favoriteFromDate || prevProps.favoriteChartStore.favoriteEndDate !== favoriteChartStore.favoriteEndDate)) {
-
-      getArrRateAndArrDateCurrencyInRange(favoriteChartStore.favoriteSelectedCurrency.ID, favoriteChartStore.favoriteFromDate, favoriteChartStore.favoriteEndDate)
-        .then(response => {
-          this.props.setFavoriteBaseRangeToStore(response);
-        });
+      this.props.setFavoriteBaseRangeToStore(favoriteChartStore.favoriteSelectedCurrency.ID, favoriteChartStore.favoriteFromDate, favoriteChartStore.favoriteEndDate);
     }
   }
 
