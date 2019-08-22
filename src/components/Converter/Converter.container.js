@@ -17,8 +17,16 @@ const mapStatetoProps = (store) => {
 //   }
 // }
 
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   console.log("Converter:" + ownProps.flag);
+
+//   return {
+//     setValueInputFromCurrencyToStore: (valueInputFromCurrency) => dispatch(setValueInputFromCurrencyToStore(valueInputFromCurrency)),
+//   }
+// }
+
 const mapDispatchToProps = {
-  
+
   setValueInputFromCurrencyToStore,
   }
 

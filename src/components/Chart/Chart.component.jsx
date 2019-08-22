@@ -18,6 +18,7 @@ function Chart__description(props) {
 }
 
 function Chart__datepicker(props) {
+
   if (props.flagDatePickersIsShow) {
     return (
       <div>

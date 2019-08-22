@@ -1,8 +1,8 @@
 import { connect } from "react-redux"
 
 import { setListFavoriteToStore, setBaseCurrencyToStore, setSelectedCurrencyToStore } from "../../action/general.action";
-import { setBaseRangeToStore, setFromDateToStore, setEndDateToStore } from "../../action/chart.action";
-import { setFavoriteSelectedCurrencyToStore, setFavoriteBaseRangeToStore, setFavoriteFromDateToStore, setFavoriteEndDateToStore } from "../../action/favoritechart.action";
+import { setBaseRangeToStore } from "../../action/chart.action";
+import { setFavoriteSelectedCurrencyToStore, setFavoriteBaseRangeToStore } from "../../action/favoritechart.action";
 
 import Content from "./Content.component.jsx"
 
@@ -15,33 +15,14 @@ const mapStatetoProps = (store) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     setSelectedCurrencyToStore: (selectedCurrency) => dispatch(setSelectedCurrencyToStore(selectedCurrency)),
-//     setBaseCurrencyToStore: (baseCurrency) => dispatch(setBaseCurrencyToStore(baseCurrency)),
-//     setListFavoriteToStore: (listFavorite) => dispatch(setListFavoriteToStore(listFavorite)),
-//     setBaseRangeToStore: (baseRange) => dispatch(setBaseRangeToStore(baseRange)),
-//     setFromDateToStore: (fromDate) => dispatch(setFromDateToStore(fromDate)),
-//     setEndDateToStore: (endDate) => dispatch(setEndDateToStore(endDate)),
-//     setFavoriteSelectedCurrencyToStore: (favoriteSelectedCurrency) => dispatch(setFavoriteSelectedCurrencyToStore(favoriteSelectedCurrency)),
-//     setFavoriteBaseRangeToStore: (favoriteBaseRange) => dispatch(setFavoriteBaseRangeToStore(favoriteBaseRange)),
-//     setFavoriteFromDateToStore: (favoriteFromDate) => dispatch(setFavoriteFromDateToStore(favoriteFromDate)),
-//     setFavoriteEndDateToStore: (favoriteEndDate) => dispatch(setFavoriteEndDateToStore(favoriteEndDate)),
-//   }
-// }
-
 const mapDispatchToProps = {
 
   setSelectedCurrencyToStore,
   setBaseCurrencyToStore,
   setListFavoriteToStore,
   setBaseRangeToStore,
-  setFromDateToStore,
-  setEndDateToStore,
   setFavoriteSelectedCurrencyToStore,
   setFavoriteBaseRangeToStore,
-  setFavoriteFromDateToStore,
-  setFavoriteEndDateToStore,
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Content)

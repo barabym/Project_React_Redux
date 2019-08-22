@@ -1,2 +1,2 @@
-import Chart from './Chart.component.jsx'
+import Chart from './Chart.container'
 export default Chart

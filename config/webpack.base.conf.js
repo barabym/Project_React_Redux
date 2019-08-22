@@ -3,8 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
-// BASE config
-
 const PATHS = {
   src: path.resolve(__dirname, '../src'),
   dist: path.resolve(__dirname, '../dist'),
@@ -27,7 +25,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,            
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: '/node_modules/'
       },
@@ -61,6 +59,6 @@ module.exports = {
       // filename: './index.html'
     }),
 
-    new ProgressBarPlugin ()
+    new ProgressBarPlugin()
   ],
 }

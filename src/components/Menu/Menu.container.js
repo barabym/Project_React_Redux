@@ -4,7 +4,7 @@ import Menu from "./Menu.component.jsx"
 
 const mapStatetoProps = (store) => {
   return {
-    generalStore: store.generalStore,
+    amountFavorite: +store.generalStore.listFavorite.length,
   }
 }
 
