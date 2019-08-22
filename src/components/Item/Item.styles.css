@@ -1,0 +1,31 @@
+.item-box {
+  width: 25%;
+  color: rgb(0, 170, 255);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.item-box_selected {
+  color: white;
+}
+
+.item-box_diff-neutral {
+  color: rgb(0, 170, 255);
+  background: rgb(255, 255, 0);
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+.item-box_diff-positive {
+  color: white;
+  background: #00B815;
+  margin-right: 5px;
+  border-radius:10px;
+}
+
+.item-box_diff-negative {
+  color: white;
+  background: #F21D1D;
+  margin-right: 5px;
+  border-radius: 10px;
+}
