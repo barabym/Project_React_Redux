@@ -1,7 +1,7 @@
 const initialState = {
   baseCurrency: [],
   filterWord: "",
-  selectedCurrency: [],
+  selectedCurrency: {},
 };
 
 export const sidebarReducer = (state = initialState, action) => {

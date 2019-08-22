@@ -15,18 +15,14 @@ class App extends Component {
     return (
       <div className="app">
         <Menu />
-
         <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
           <>
             <Sidebar />
-            <Content
-              // baseCurrency={this.state.baseCurrency}
-              // selectedCurrency={this.state.selectedCurrency}
-            />
+            <Content />
           </>
         )} />
-        {/* <Route exact path="/about" render={() => (<AboutPage />)} /> */}
-        {/* <Route exact path="/favorite" render={() => (<FavoritePage />)} /> */}
+        <Route exact path="/about" render={() => (<AboutPage />)} />
+        <Route exact path="/favorite" render={() => (<FavoritePage />)} />
       </div>
     );
   }
