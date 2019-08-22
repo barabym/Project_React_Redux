@@ -5,16 +5,16 @@ export function setBaseCurrencyToStore(baseCurrency) {
   }
 }
 
-export function setFilterWordToStore(filterWord) {
-  return {
-    type: "set_filterWord",
-    payload: filterWord
-  }
-}
-
 export function setSelectedCurrencyToStore(selectedCurrency) {
   return {
     type: "set_selectedCurrency",
     payload: selectedCurrency
+  }
+}
+
+export function setListFavoriteToStore(listFavorite) {
+  return {
+    type: "set_listFavorite",
+    payload: listFavorite
   }
 }

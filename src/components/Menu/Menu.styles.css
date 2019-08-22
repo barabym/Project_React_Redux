@@ -12,6 +12,11 @@ ul {
   width: 65%;
 }
 
+.menu_position-center {
+  margin-left: 0;
+  width: 100%;
+}
+
 .menu li {
   display: inline-block;
   padding: 0 25px;
@@ -23,4 +28,8 @@ ul {
 
 .menu li+li {
   border-left: 3px solid #424242;
+}
+
+.number-Favorite{
+  color: red;
 }

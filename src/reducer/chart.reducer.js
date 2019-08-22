@@ -7,10 +7,8 @@ const initialState = {
 
 export const chartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "set_baseRangeDate":
-      return { ...state, baseRangeDate: action.payload }
-    case "set_baseRangeRate":
-      return { ...state, baseRangeRate: action.payload }
+    case "set_baseRange":
+      return { ...state, baseRangeDate: action.payload[0], baseRangeRate: action.payload[1] }
     case "set_fromDate":
       return { ...state, fromDate: action.payload }
     case "set_endDate":

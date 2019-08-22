@@ -11,11 +11,12 @@
   border: 2px solid #424242;
   border-radius: 5px;
   box-shadow: 0px 0px 3px white;
+  cursor: pointer;
 }
 
 .button__wrapper {
   /* height: 176px; */
-  padding: 60px 0 7px 0;
+  padding: 65px 0 5px 0;
   box-sizing: border-box;
   display: flex;
   justify-content: flex-end;

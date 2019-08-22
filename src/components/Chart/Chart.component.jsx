@@ -1,48 +1,78 @@
 import React, { Component } from "react";
 import { Line } from 'react-chartjs-2';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
-import Datepicker from "../Datepicker";
+// import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
 
 import './Chart.styles.css';
 
-import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDateCurrencyInRange.js";
+function Chart__description(props) {
+  if (props.flagDescriptionIsShow) {
+    return (
+      <div className="chart__description">
+        <p>Currency Name: {props.currencyName}</p>
+        <p>Currency Abbreviation: {props.currencyAbbreviation}</p>
+      </div>
+    );
+  }
+  else return null;
+}
+
+function Chart__datepicker(props) {
+  if (props.flagDatePickersIsShow) {
+    return (
+      <div>
+        <p className="chart__datepicker-title">{props.title}</p>
+        <DatePicker
+          selected={props.startDate}
+          onChange={props.onChange}
+          dateFormat="dd MMMM yyyy"
+          className="chart__datepicker"
+          // minDate={subDays(new Date(), 5)}
+          maxDate={new Date()}
+        />
+      </div>
+    );
+  }
+  else return null;
+}
 
 class Chart extends Component {
 
-  componentDidMount() {
-    const { sidebarStore, chartStore, setBaseRangeDateToStore, setBaseRangeRateToStore } = this.props;
-    if (sidebarStore.selectedCurrency.ID) {
-      getArrRateArrDateCurrencyInRange(sidebarStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
-        .then(response => {
-          setBaseRangeDateToStore(response[0]); // попробуй объеденить
-          setBaseRangeRateToStore(response[1]);
-        });
-    }
-  }
+  // componentDidMount() {
+  //   const { generalStore, chartStore, setBaseRangeToStore } = this.props;
+  //   if (generalStore.selectedCurrency.ID) {
+  //     getArrRateArrDateCurrencyInRange(generalStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
+  //       .then(response => {
+  //         setBaseRangeToStore(response);
+  //       });
+  //   }
+  // }
 
-  componentDidUpdate(prevProps, PrevState) {
-    const { setBaseRangeDateToStore, setBaseRangeRateToStore } = this.props;
-    if (prevProps.sidebarStore.selectedCurrency.ID !== this.props.sidebarStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
-      getArrRateArrDateCurrencyInRange(this.props.sidebarStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
-        .then(response => {
-          setBaseRangeDateToStore(response[0]); // попробуй объеденить
-          setBaseRangeRateToStore(response[1]);
-        });
-    }
-  }
+  // componentDidUpdate(prevProps, PrevState) {
+  //   const { setBaseRangeToStore } = this.props;
+  //   if (prevProps.generalStore.selectedCurrency.ID !== this.props.generalStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
+  //     getArrRateArrDateCurrencyInRange(this.props.generalStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
+  //       .then(response => {
+  //         setBaseRangeToStore(response);
+  //       });
+  //   }
+  // }
 
-  onChangeFromDate = (date) => {
-    this.props.setFromDateToStore(date)
-  }
+  // onChangeFromDate = (date) => {
+  //   this.props.setFromDateToStore(date)
+  // }
 
-  onChangeEndDate = (date) => {
-    this.props.setEndDateToStore(date)
-  }
+  // onChangeEndDate = (date) => {
+  //   this.props.setEndDateToStore(date)
+  // }
 
   render() {
+    // alert(this.props.aaa+"!!!!!!!");
     const data = {
-      labels: this.props.chartStore.baseRangeDate,
+      labels: this.props.rangeDate,
 
       datasets: [
         {
@@ -65,7 +95,7 @@ class Chart extends Component {
           pointHoverBorderWidth: 2,
           // pointRadius: 1,
           pointHitRadius: 1,
-          data: this.props.chartStore.baseRangeRate,
+          data: this.props.rangeRate,
         }
       ]
     }
@@ -126,21 +156,25 @@ class Chart extends Component {
 
     return (
       <>
-        <Route exact path={["/", "/currensies"]} render={() => (
-          <div className="chart__wrapper-for-datepicker">
-            <Datepicker
-              title={"From date:"}
-              startDate={this.props.chartStore.fromDate}
-              onChange={this.onChangeFromDate}
-            />
-            <Datepicker
-              title={"End date:"}
-              startDate={this.props.chartStore.endDate}
-              onChange={this.onChangeEndDate}
-            />
-          </div>
-        )} />
-
+        <div className="chart__wrapper-for-addition">
+          <Chart__description
+            flagDescriptionIsShow={this.props.flagDescriptionIsShow}
+            currencyName={this.props.currencyName}
+            currencyAbbreviation={this.props.currencyAbbreviation}
+          />
+          <Chart__datepicker
+            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
+            title={"From date:"}
+            startDate={this.props.fromDate}
+            onChange={this.props.onChangeFromDate}
+          />
+          <Chart__datepicker
+            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
+            title={"End date:"}
+            startDate={this.props.endDate}
+            onChange={this.props.onChangeEndDate}
+          />
+        </div>
         <div className="chart__wrapper">
           <Line
             data={data}
