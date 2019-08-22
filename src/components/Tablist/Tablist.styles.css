@@ -53,7 +53,11 @@
   height: 29px;
 }
 
-.button-del-tab {
+.tab_selected {
+  background: rgba(0, 170, 255, 1);
+}
+
+.tab__button-del-tab {
   margin-left: 20px;
   margin-right: 3px;
   /* position: relative; */
@@ -77,7 +81,7 @@
   /* width: 30%; */
   /* padding: 3px 8px; */
   /* box-sizing: border-box; */
-  background-color: #ff000062;
+  background-color: #791C24;
   /* background-image: url(./Picture/Favorite_512x512.ico); */
   border: 1px solid #424242;
   border-radius: 5px;

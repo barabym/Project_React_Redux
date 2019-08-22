@@ -6,6 +6,7 @@ import Search from "../Search";
 import ItemList from "../ItemList";
 
 class Sidebar extends Component {
+  
   state = {
     filterWord: "",
   }
@@ -16,6 +17,8 @@ class Sidebar extends Component {
 
   onClickSelectCurrencyItem = (selectedCurrency) => {
     this.props.setSelectedCurrencyToStore(selectedCurrency)
+    // console.log(selectedCurrency);
+    
   }
 
   render() {

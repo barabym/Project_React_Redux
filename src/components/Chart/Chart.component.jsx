@@ -12,8 +12,8 @@ function Chart__description(props) {
   if (props.flagDescriptionIsShow) {
     return (
       <div className="chart__description">
-        <p>Currency Name: American Dollar</p>
-        <p>Currency Abbreviation: USD</p>
+        <p>Currency Name: {props.currencyName}</p>
+        <p>Currency Abbreviation: {props.currencyAbbreviation}</p>
       </div>
     );
   }
@@ -159,6 +159,8 @@ class Chart extends Component {
         <div className="chart__wrapper-for-addition">
           <Chart__description
             flagDescriptionIsShow={this.props.flagDescriptionIsShow}
+            currencyName={this.props.currencyName}
+            currencyAbbreviation={this.props.currencyAbbreviation}
           />
           <Chart__datepicker
             flagDatePickersIsShow={this.props.flagDatePickersIsShow}
