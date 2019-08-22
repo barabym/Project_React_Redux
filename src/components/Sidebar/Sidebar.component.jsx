@@ -8,16 +8,19 @@ import ItemList from "../ItemList";
 import { getBaseCurrency } from "../../service/getBaseCurrency.js";
 
 class Sidebar extends Component {
+  state = {
+    filterWord: "",
+  }
 
   componentDidMount() {
     getBaseCurrency().then(response => {
-      if (!this.props.sidebarStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
-      if (!this.props.sidebarStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
+      if (!this.props.generalStore.baseCurrency[0]) this.props.setBaseCurrencyToStore(response);
+      if (!this.props.generalStore.selectedCurrency.ID) this.props.setSelectedCurrencyToStore(response[0]);
     });
   }
 
-  onClickSearchButton = (searchWord) => {
-    this.props.setFilterWordToStore(searchWord);
+  onClickSearchButton = (filterWord) => {
+    this.setState({ filterWord: filterWord });
   }
 
   onClickSelectCurrencyItem = (selectedCurrency) => {
@@ -25,16 +28,16 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { sidebarStore } = this.props;
+    const { generalStore } = this.props;
     return (
       <div className="sidebar">
         <Search
           onClickSearchButton={this.onClickSearchButton}
         />
         <ItemList
-          baseItem={sidebarStore.baseCurrency}
-          filterWord={sidebarStore.filterWord}
-          idSelectedCurrency={sidebarStore.selectedCurrency.ID}
+          baseItem={generalStore.baseCurrency}
+          filterWord={this.state.filterWord}
+          idSelectedCurrency={generalStore.selectedCurrency.ID}
           onClickSelectCurrencyItem={this.onClickSelectCurrencyItem}
         />
       </div>

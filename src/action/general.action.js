@@ -5,13 +5,6 @@ export function setBaseCurrencyToStore(baseCurrency) {
   }
 }
 
-export function setFilterWordToStore(filterWord) {
-  return {
-    type: "set_filterWord",
-    payload: filterWord
-  }
-}
-
 export function setSelectedCurrencyToStore(selectedCurrency) {
   return {
     type: "set_selectedCurrency",

@@ -1,14 +1,7 @@
-export function setBaseRangeDateToStore(baseRangeDate) {
+export function setBaseRangeToStore(baseRange) {
   return {
-    type: "set_baseRangeDate",
-    payload: baseRangeDate
-  }
-}
-
-export function setBaseRangeRateToStore(baseRangeRate) {
-  return {
-    type: "set_baseRangeRate",
-    payload: baseRangeRate
+    type: "set_baseRange",
+    payload: baseRange
   }
 }
 

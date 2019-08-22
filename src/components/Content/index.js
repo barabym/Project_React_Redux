@@ -1,2 +1,2 @@
-import Content from './Content.component.jsx'
+import Content from './Content.container'
 export default Content

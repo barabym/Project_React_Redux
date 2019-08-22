@@ -1,11 +1,11 @@
 import { connect } from "react-redux"
 import { setValueInputFromCurrencyToStore, setIdDropListCurrencyToStore } from "../../action/converter.action";
 
-import Converter from "./Converter.component.jsx"
+import Content from "./Content.component.jsx"
 
 const mapStatetoProps = (store) => {
   return {
-    sidebarStore: store.sidebarStore, //попробуй не брать filterword
+    generalStore: store.generalStore,
     converterStore: store.converterStore,
   }
 }
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Converter)
+export default connect(mapStatetoProps, mapDispatchToProps)(Content)

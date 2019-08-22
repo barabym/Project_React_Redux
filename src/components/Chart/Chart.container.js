@@ -1,19 +1,18 @@
 import { connect } from "react-redux"
-import { setBaseRangeDateToStore, setBaseRangeRateToStore, setFromDateToStore, setEndDateToStore } from "../../action/chart.action";
+import { setBaseRangeToStore, setFromDateToStore, setEndDateToStore } from "../../action/chart.action";
 
 import Chart from "./Chart.component.jsx"
 
 const mapStatetoProps = (store) => {
   return {
-    sidebarStore: store.sidebarStore, //попробуй не брать filterword
+    generalStore: store.generalStore,
     chartStore: store.chartStore,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setBaseRangeDateToStore: (baseRangeDate) => dispatch(setBaseRangeDateToStore(baseRangeDate)),
-    setBaseRangeRateToStore: (baseRangeRate) => dispatch(setBaseRangeRateToStore(baseRangeRate)),
+    setBaseRangeToStore: (baseRange) => dispatch(setBaseRangeToStore(baseRange)),
     setFromDateToStore: (fromDate) => dispatch(setFromDateToStore(fromDate)),
     setEndDateToStore: (endDate) => dispatch(setEndDateToStore(endDate)),
   }

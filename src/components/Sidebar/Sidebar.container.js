@@ -1,11 +1,11 @@
 import { connect } from "react-redux"
-import { setBaseCurrencyToStore, setFilterWordToStore, setSelectedCurrencyToStore } from "../../action/sidebar.action";
+import { setBaseCurrencyToStore, setSelectedCurrencyToStore } from "../../action/general.action";
 
 import Sidebar from "./Sidebar.component.jsx"
 
 const mapStatetoProps = (store) => {
   return {
-    sidebarStore: store.sidebarStore,
+    generalStore: store.generalStore,
   }
 }
 

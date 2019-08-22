@@ -1,2 +1,2 @@
-import Converter from './Converter.container'
+import Converter from './Converter.component.jsx'
 export default Converter

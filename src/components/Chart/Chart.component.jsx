@@ -11,23 +11,21 @@ import { getArrRateArrDateCurrencyInRange } from "../../service/getArrRateArrDat
 class Chart extends Component {
 
   componentDidMount() {
-    const { sidebarStore, chartStore, setBaseRangeDateToStore, setBaseRangeRateToStore } = this.props;
-    if (sidebarStore.selectedCurrency.ID) {
-      getArrRateArrDateCurrencyInRange(sidebarStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
+    const { generalStore, chartStore, setBaseRangeToStore} = this.props;
+    if (generalStore.selectedCurrency.ID) {
+      getArrRateArrDateCurrencyInRange(generalStore.selectedCurrency.ID, chartStore.fromDate, chartStore.endDate)
         .then(response => {
-          setBaseRangeDateToStore(response[0]); // попробуй объеденить
-          setBaseRangeRateToStore(response[1]);
+          setBaseRangeToStore(response);
         });
     }
   }
 
   componentDidUpdate(prevProps, PrevState) {
-    const { setBaseRangeDateToStore, setBaseRangeRateToStore } = this.props;
-    if (prevProps.sidebarStore.selectedCurrency.ID !== this.props.sidebarStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
-      getArrRateArrDateCurrencyInRange(this.props.sidebarStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
+    const { setBaseRangeToStore } = this.props;
+    if (prevProps.generalStore.selectedCurrency.ID !== this.props.generalStore.selectedCurrency.ID || prevProps.chartStore.fromDate !== this.props.chartStore.fromDate || prevProps.chartStore.endDate !== this.props.chartStore.endDate) {
+      getArrRateArrDateCurrencyInRange(this.props.generalStore.selectedCurrency.ID, this.props.chartStore.fromDate, this.props.chartStore.endDate)
         .then(response => {
-          setBaseRangeDateToStore(response[0]); // попробуй объеденить
-          setBaseRangeRateToStore(response[1]);
+          setBaseRangeToStore(response);
         });
     }
   }

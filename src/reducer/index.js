@@ -1,10 +1,11 @@
 import { combineReducers } from "redux";
-import { sidebarReducer } from "./sidebar.reducer";
+
+import { generalReducer } from "./general.reducer";
 import { converterReducer } from "./converter.reducer";
 import { chartReducer } from "./chart.reducer";
 
 export const rootReducer = combineReducers({
-  sidebarStore: sidebarReducer,
+  generalStore: generalReducer,
   converterStore: converterReducer,
   chartStore: chartReducer,
 });
