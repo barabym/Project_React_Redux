@@ -7,7 +7,7 @@ class Menu extends Component {
 
   render() {
     return (
-      <div className="menu">
+      <div className={this.props.style}>
         <ul>
           <li><Link to="/currensies">Currensies</Link></li>
           <li><Link to="/calculator">Calculator</Link></li>

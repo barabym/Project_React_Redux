@@ -3,26 +3,23 @@ import { Route } from 'react-router-dom';
 
 import './App.styles.css';
 
-import Menu from "../Menu";
 import Sidebar from "../Sidebar";
 import Content from "../Content";
-import AboutPage from "../AboutPage";
-import FavoritePage from "../FavoritePage";
 
 class App extends Component {
 
   render() {
     return (
       <div className="app">
-        <Menu />
         <Route exact path={["/", "/currensies", "/calculator"]} render={() => (
           <>
             <Sidebar />
             <Content />
           </>
         )} />
-        <Route exact path="/about" render={() => (<AboutPage />)} />
-        <Route exact path="/favorite" render={() => (<FavoritePage />)} />
+        <Route exact path={["/about", "/favorite"]} render={() => (
+          <Content />
+        )} />
       </div>
     );
   }
