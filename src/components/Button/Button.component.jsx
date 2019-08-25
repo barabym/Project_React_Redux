@@ -1,12 +1,13 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 import './Button.styles.css';
 
 function Button(props) {
-
+  const { onClickButton } = props;
   return (
     <div className="button__wrapper">
-      <button className="button" onClick={props.onClickButton}>❤ To favorite</button>
+      <button type="button" className="button" onClick={onClickButton}>❤ To favorite</button>
     </div>
   );
 }

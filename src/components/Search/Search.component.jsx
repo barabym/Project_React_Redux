@@ -1,45 +1,50 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 
 import './Search.styles.css';
 
-function Search__input(props) {
+function SearchInput(props) {
+  const { onChangeSearchInput } = props;
   return (
-    <input type="search" className="search__input" onChange={props.onChangeSearchInput} placeholder=" Search currency..."></input>
+    <input type="search" className="search__input" onChange={onChangeSearchInput} placeholder=" Search currency..." />
   );
 }
 
-function Search__button(props) {
+function SearchButton(props) {
+  const { onClickSearchButton } = props;
   return (
-    <button className="search__button" onClick={props.onClickSearchButton}>Search</button>
+    <button type="button" className="search__button" onClick={onClickSearchButton}>Search</button>
   );
 }
 
 class Search extends Component {
-
   state = {
-    searchWord: "",
+    searchWord: '',
   }
 
   onClickSearchButton = () => {
-    this.props.setfilterWordToStore(this.state.searchWord);
+    const { setfilterWordToStore } = this.props;
+    const { searchWord } = this.state;
+    setfilterWordToStore(searchWord);
   }
 
-  onChangeSearchInput = (e) => {
-    this.setState({ searchWord: e.target.value });
-    if (!e.target.value) { this.props.setfilterWordToStore("") }
+  onChangeSearchInput = event => {
+    const { setfilterWordToStore } = this.props;
+    this.setState({ searchWord: event.target.value });
+    if (!event.target.value) { setfilterWordToStore(''); }
   }
 
   render() {
     return (
       <div className="search">
-        <Search__input
+        <SearchInput
           onChangeSearchInput={this.onChangeSearchInput}
         />
-        <Search__button
+        <SearchButton
           onClickSearchButton={this.onClickSearchButton}
         />
       </div>
-    )
+    );
   }
 }
 

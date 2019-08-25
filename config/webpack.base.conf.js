@@ -1,21 +1,21 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const PATHS = {
   src: path.resolve(__dirname, '../src'),
   dist: path.resolve(__dirname, '../dist'),
-  assets: 'assets/'
-}
+  assets: 'assets/',
+};
 
 module.exports = {
 
   externals: {
-    paths: PATHS
+    paths: PATHS,
   },
   entry: {
-    app: PATHS.src
+    app: PATHS.src,
   },
   output: {
     filename: `${PATHS.assets}js/[name].js`,
@@ -24,10 +24,16 @@ module.exports = {
   },
   module: {
     rules: [
+      // {
+      //   enforce: 'pre',
+      //   test: /\.(js|jsx)$/,
+      //   loader: 'eslint-loader',
+      //   exclude: '/node_modules/',
+      // },
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        exclude: '/node_modules/'
+        exclude: '/node_modules/',
       },
 
       {
@@ -37,15 +43,15 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { sourceMap: true }
+            options: { sourceMap: true },
           },
           {
             loader: 'postcss-loader',
-            options: { sourceMap: true, config: { path: "./config//postcss.config.js" } }
-          }
-        ]
-      }
-    ]
+            options: { sourceMap: true, config: { path: './config//postcss.config.js' } },
+          },
+        ],
+      },
+    ],
   },
 
   plugins: [
@@ -59,6 +65,6 @@ module.exports = {
       // filename: './index.html'
     }),
 
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
   ],
-}
+};

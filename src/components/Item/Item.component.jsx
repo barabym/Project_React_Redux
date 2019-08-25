@@ -1,23 +1,26 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 import './Item.styles.css';
 
 function Item(props) {
-
+  const { flagSelectedItem, item } = props;
+  let style = 'item-box_diff-neutral';
+  if (item.Diff > 0) style = 'item-box_diff-positive';
+  if (item.Diff < 0) style = 'item-box_diff-negative';
   return (
     <>
-      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-        {props.item.Abbr}
+      <div className={flagSelectedItem ? 'item-box item-box_selected' : 'item-box'}>
+        {item.Abbr}
       </div>
-      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-        {props.item.Scale + props.item.SymbolCur}
+      <div className={flagSelectedItem ? 'item-box item-box_selected' : 'item-box'}>
+        {item.Scale + item.SymbolCur}
       </div>
-      <div className={props.flagSelectedItem ? "item-box item-box_selected" : "item-box"}>
-        {props.item.Rate}
+      <div className={flagSelectedItem ? 'item-box item-box_selected' : 'item-box'}>
+        {item.Rate}
       </div>
-      <div className={props.item.Diff == 0 ? "item-box item-box_diff-neutral" :
-        props.item.Diff > 0 ? "item-box item-box_diff-positive" : "item-box item-box_diff-negative"}>
-        {props.item.Diff > 0 ? "+" + props.item.Diff : props.item.Diff}
+      <div className={`item-box ${style}`}>
+        {item.Diff > 0 ? `+${item.Diff}` : item.Diff}
       </div>
     </>
   );

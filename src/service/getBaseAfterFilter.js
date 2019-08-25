@@ -1,7 +1,5 @@
+/* eslint-disable import/prefer-default-export */
 export function getBaseAfterFilter(baseItem, filterWord) {
-
-	let baseAfterFilter = baseItem.filter((item) => {
-		return ~item.Abbr.indexOf(filterWord.toUpperCase());
-	})
-	return baseAfterFilter;
+  const baseAfterFilter = baseItem.filter(item => ~item.Abbr.indexOf(filterWord.toUpperCase()));
+  return baseAfterFilter;
 }

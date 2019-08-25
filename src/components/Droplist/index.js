@@ -1,2 +1,3 @@
-import Droplist from './Droplist.container'
-export default Droplist
+import Droplist from './Droplist.container';
+
+export default Droplist;

@@ -1,25 +1,31 @@
-import React, { Component } from "react";
+/* eslint-disable react/jsx-max-props-per-line */
+/* eslint-disable react/jsx-first-prop-new-line */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 
 import './Droplist.styles.css';
 
 class Droplist extends Component {
-
-  onChangeDroplist = (e) => {
-    this.props.setIdDropListCurrencyToStore(e.target.selectedIndex);
+  onChangeDroplist = event => {
+    const { setIdDropListCurrencyToStore } = this.props;
+    setIdDropListCurrencyToStore(event.target.selectedIndex);
   }
 
   render() {
     const { generalStore, converterStore } = this.props;
     return (
-      <select className="droplist" value={generalStore.baseCurrency[0] ? generalStore.baseCurrency[converterStore.idDropListCurrency].Abbr : ""}
-        onChange={this.onChangeDroplist}>
-        {generalStore.baseCurrency.map((currency) => {
-          return <option className="droplist__option"
-            key={currency.Abbr} value={currency.Abbr}>{currency.Abbr}
+      <select className="droplist" value={generalStore.baseCurrency[0] ? generalStore.baseCurrency[converterStore.idDropListCurrency].Abbr : ''}
+        onChange={this.onChangeDroplist}
+      >
+        {generalStore.baseCurrency.map(currency => (
+          <option className="droplist__option"
+            key={currency.Abbr} value={currency.Abbr}
+          >
+            {currency.Abbr}
           </option>
-        })}
+        ))}
       </select>
-    )
+    );
   }
 }
 

@@ -1,24 +1,26 @@
-import React from "react";
+/* eslint-disable react/jsx-max-props-per-line */
+/* eslint-disable react/jsx-first-prop-new-line */
+/* eslint-disable react/prop-types */
+import React from 'react';
 
 import './Tablist.styles.css';
 
 function Tablist(props) {
-
   const { generalStore, favoriteChartStore } = props;
-  let selectedCurrencyAbbr = favoriteChartStore.favoriteSelectedCurrency.Abbr || "";
+  const selectedCurrencyAbbr = favoriteChartStore.favoriteSelectedCurrency.Abbr || '';
 
   return (
     <div className="tablist">
-      {generalStore.listFavorite.map((item) => {
-        return (
-          <div key={item} className={item == selectedCurrencyAbbr ? "tab tab_selected" :
-            "tab"} onClick={() => { props.onClickTab(item) }}>
-            <span>{item}</span>
-            <button className="tab__button-del-tab" onClick={(e) => { props.onClickDelTab(e, item) }}>X</button>
-          </div>
-        )
-      })}
-    </div>)
+      {generalStore.listFavorite.map(item => (
+        <div key={item} className={item === selectedCurrencyAbbr ? 'tab tab_selected'
+          : 'tab'} onClick={() => { props.onClickTab(item); }}
+        >
+          <span>{item}</span>
+          <button type="button" className="tab__button-del-tab" onClick={event => { props.onClickDelTab(event, item); }}>X</button>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Tablist;

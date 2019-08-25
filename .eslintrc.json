@@ -1,0 +1,91 @@
+{
+    "root": true,
+    "env": {
+        "browser": true
+    },
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "globals": {
+        "document": true,
+        "window": true,
+        "process": true,
+        "localStorage": true,
+        "fetch": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "arrow-parens": [
+            "warn",
+            "as-needed"
+        ],
+        "class-methods-use-this": "off",
+        "consistent-return": "warn",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "warn",
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "linebreak-style": "off",
+        "no-console": [
+            "error",
+            {
+                "allow": [
+                    "warn",
+                    "error",
+                    "debug"
+                ]
+            }
+        ],
+        "no-plusplus": "off",
+        "no-restricted-syntax": "off",
+        "no-bitwise": [
+            "error",
+            {
+                "allow": [
+                    "~"
+                ]
+            }
+        ],
+        "react/forbid-prop-types": "off",
+        "react/no-array-index-key": "warn",
+        "react/no-did-mount-set-state": "off",
+        "react/prefer-stateless-function": "off",
+        "react/require-default-props": "off",
+        "react/self-closing-comp": "warn",
+        "react/sort-comp": "off",
+        "react/state-in-constructor": "off",
+        "spaced-comment": [
+            "warn",
+            "always",
+            {
+                "markers": [
+                    "#region"
+                ],
+                "exceptions": [
+                    "#endregion"
+                ]
+            }
+        ]
+    }
+}

@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import App from "./components/App";
-import { store } from "./store/configureStore";
+import App from './components/App';
+import { store } from './store/configureStore';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -12,4 +13,4 @@ ReactDOM.render((
       <Route path="/" component={App} />
     </HashRouter>
   </Provider>
-), document.getElementById("root"));
+), document.getElementById('root'));

@@ -17,15 +17,7 @@
     "jsx-a11y/anchor-is-valid": "off",
     "react/prefer-stateless-function": "off",
     "import/prefer-default-export": "warn",
-    "spaced-comment": [ "warn", "always", {
-        "markers": [
-          "#region"
-        ],
-        "exceptions": [
-          "#endregion"
-        ]
-      }
-    ],
+    "spaced-comment": [ "warn", "always", { "markers": ["#region"], "exceptions": ["#endregion"] } ],
     "react/self-closing-comp": "warn",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
@@ -37,35 +29,12 @@
     "jsx-a11y/label-has-for": "off",
     "consistent-return": "warn",
     "react/no-array-index-key": "warn",
-    "arrow-parens": [
-      "warn",
-      "as-needed"
-    ],
+    "arrow-parens": [ "warn", "as-needed" ],
     "react/no-did-mount-set-state": "off",
     "react/forbid-prop-types": "off",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
+    "import/no-extraneous-dependencies": ["error",  { "devDependencies": true } ],
     "jsx-a11y/label-has-associated-control": "off",
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "warn",
-          "error",
-          "debug"
-        ]
-      }
-    ]
-  },
-  // "settings": {
-  //   "import/resolver": {
-  //     "webpack": {
-  //       "config": "./config/webpack.prod.babel.js"
-  //     }
-  //   }
-  // }
+    "no-console": [ "error",  { "allow": [ "warn", "error", "debug" ] } ]
+   },
+  // "settings": {"import/resolver": {"webpack": {"config": "./config/webpack.prod.babel.js" } } }
 }

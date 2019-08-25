@@ -1,20 +1,23 @@
-import React, { Component } from "react";
+/* eslint-disable react/jsx-max-props-per-line */
+/* eslint-disable react/jsx-first-prop-new-line */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 
 import './ItemList.styles.css';
 
-import Item from "../Item";
+import Item from '../Item';
 
-import { getBaseAfterFilter } from "../../service/getBaseAfterFilter.js";
+import { getBaseAfterFilter } from '../../service/getBaseAfterFilter';
 
 class ItemList extends Component {
-
   onClickItem(item) {
-    this.props.setSelectedCurrencyToStore(item);
+    const { setSelectedCurrencyToStore } = this.props;
+    setSelectedCurrencyToStore(item);
   }
 
   render() {
-
-    let baseItem = getBaseAfterFilter(this.props.generalStore.baseCurrency, this.props.searchStore.filterWord);
+    const { generalStore, searchStore } = this.props;
+    const baseItem = getBaseAfterFilter(generalStore.baseCurrency, searchStore.filterWord);
 
     return (
       <div className="item-list">
@@ -24,20 +27,23 @@ class ItemList extends Component {
           <div className="item-list__header-box">Rate</div>
           <div className="item-list__header-box">Diff</div>
         </div>
-        
+
         <ul className="item-list__body">
-          {baseItem.map((item) => {
-            let flagSelectedItem = (item.ID == this.props.generalStore.selectedCurrency.ID);
-            return <li key={item.ID} className={flagSelectedItem ? "item-list__item item-list__item_selected" :
-              "item-list__item"} onClick={() => this.onClickItem(item)}>
-              <Item
-                item={item}
-                flagSelectedItem={flagSelectedItem}
-              />
-            </li>
+          {baseItem.map(item => {
+            const flagSelectedItem = (item.ID === generalStore.selectedCurrency.ID);
+            return (
+              <li key={item.ID} className={flagSelectedItem ? 'item-list__item item-list__item_selected'
+                : 'item-list__item'} onClick={() => this.onClickItem(item)}
+              >
+                <Item
+                  item={item}
+                  flagSelectedItem={flagSelectedItem}
+                />
+              </li>
+            );
           })}
         </ul>
-        
+
       </div>
     );
   }

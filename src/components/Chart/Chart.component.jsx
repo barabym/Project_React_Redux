@@ -1,31 +1,44 @@
-import React, { Component } from "react";
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import './Chart.styles.css';
 
-function Chart__description(props) {
-  if (props.flagDescriptionIsShow) {
+function ChartDescription(props) {
+  const { flagDescriptionIsShow, currencyName, currencyAbbreviation } = props;
+  if (flagDescriptionIsShow) {
     return (
       <div>
-        <p>Currency Name: {props.currencyName}</p>
-        <p>Currency Abbreviation: {props.currencyAbbreviation}</p>
+        <p>
+          Currency Name:
+          {' '}
+          {currencyName}
+        </p>
+        <p>
+          Currency Abbreviation:
+          {' '}
+          {currencyAbbreviation}
+        </p>
       </div>
     );
   }
-  else return null;
+  return null;
 }
 
-function Chart__datepicker(props) {
+function ChartDatepicker(props) {
+  const {
+    flagDatePickersIsShow, title, startDate, onChange,
+  } = props;
 
-  if (props.flagDatePickersIsShow) {
+  if (flagDatePickersIsShow) {
     return (
       <div>
-        <p className="chart__datepicker-title">{props.title}</p>
+        <p className="chart__datepicker-title">{title}</p>
         <DatePicker
-          selected={props.startDate}
-          onChange={props.onChange}
+          selected={startDate}
+          onChange={onChange}
           dateFormat="dd MMMM yyyy"
           className="chart__datepicker"
           maxDate={new Date()}
@@ -33,15 +46,20 @@ function Chart__datepicker(props) {
       </div>
     );
   }
-  else return null;
+  return null;
 }
 
 class Chart extends Component {
-
   render() {
+    const {
+      rangeDate, rangeRate,
+      flagDescriptionIsShow, flagDatePickersIsShow,
+      currencyName, currencyAbbreviation,
+      fromDate, endDate, onChangeFromDate, onChangeEndDate,
+    } = this.props;
 
     const data = {
-      labels: this.props.rangeDate,
+      labels: rangeDate,
 
       datasets: [
         {
@@ -60,19 +78,19 @@ class Chart extends Component {
           pointHoverBorderColor: 'yellow',
           pointHoverBorderWidth: 2,
           pointHitRadius: 1,
-          data: this.props.rangeRate,
-        }
-      ]
-    }
+          data: rangeRate,
+        },
+      ],
+    };
 
     const options = {
       maintainAspectRatio: false,
-      legend: { display: false, },
+      legend: { display: false },
       scales: {
         xAxes: [{
           display: true,
           gridLines: {
-            color: "gray",
+            color: 'gray',
 
           },
           ticks: {
@@ -84,36 +102,36 @@ class Chart extends Component {
         yAxes: [{
           display: true,
           gridLines: {
-            color: "gray",
+            color: 'gray',
           },
           ticks: {
             padding: 15,
             fontSize: 15,
             fontColor: 'white',
           },
-        }]
-      }
-    }
+        }],
+      },
+    };
 
     return (
       <>
         <div className="chart__wrapper-for-addition">
-          <Chart__description
-            flagDescriptionIsShow={this.props.flagDescriptionIsShow}
-            currencyName={this.props.currencyName}
-            currencyAbbreviation={this.props.currencyAbbreviation}
+          <ChartDescription
+            flagDescriptionIsShow={flagDescriptionIsShow}
+            currencyName={currencyName}
+            currencyAbbreviation={currencyAbbreviation}
           />
-          <Chart__datepicker
-            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
-            title={"From date:"}
-            startDate={this.props.fromDate}
-            onChange={this.props.onChangeFromDate}
+          <ChartDatepicker
+            flagDatePickersIsShow={flagDatePickersIsShow}
+            title="From date:"
+            startDate={fromDate}
+            onChange={onChangeFromDate}
           />
-          <Chart__datepicker
-            flagDatePickersIsShow={this.props.flagDatePickersIsShow}
-            title={"End date:"}
-            startDate={this.props.endDate}
-            onChange={this.props.onChangeEndDate}
+          <ChartDatepicker
+            flagDatePickersIsShow={flagDatePickersIsShow}
+            title="End date:"
+            startDate={endDate}
+            onChange={onChangeEndDate}
           />
         </div>
         <div className="chart__wrapper">

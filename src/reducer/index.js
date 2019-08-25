@@ -1,10 +1,11 @@
-import { combineReducers } from "redux";
+/* eslint-disable import/prefer-default-export */
+import { combineReducers } from 'redux';
 
-import { generalReducer } from "./general.reducer";
-import { searchReducer } from "./search.reducer";
-import { converterReducer } from "./converter.reducer";
-import { chartReducer } from "./chart.reducer";
-import { favoriteChartReducer } from "./favoritechart.reducer";
+import { generalReducer } from './general.reducer';
+import { searchReducer } from './search.reducer';
+import { converterReducer } from './converter.reducer';
+import { chartReducer } from './chart.reducer';
+import { favoriteChartReducer } from './favoritechart.reducer';
 
 export const rootReducer = combineReducers({
   generalStore: generalReducer,

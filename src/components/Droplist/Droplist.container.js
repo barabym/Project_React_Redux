@@ -1,25 +1,19 @@
-import { connect } from "react-redux"
+/* eslint-disable import/extensions */
+import { connect } from 'react-redux';
 
-import { setIdDropListCurrencyToStore } from "../../action/converter.action";
+import { setIdDropListCurrencyToStore } from '../../action/converter.action';
 
-import Droplist from "./Droplist.component.jsx"
+import Droplist from './Droplist.component.jsx';
 
-const mapStatetoProps = (store) => {
-  return {
+const mapStatetoProps = store => (
+  {
     generalStore: store.generalStore,
     converterStore: store.converterStore,
   }
-}
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     setIdDropListCurrencyToStore: (idDropListCurrency) => dispatch(setIdDropListCurrencyToStore(idDropListCurrency)),
-//   }
-// }
+);
 
 const mapDispatchToProps = {
-  
   setIdDropListCurrencyToStore,
-}
+};
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Droplist)
+export default connect(mapStatetoProps, mapDispatchToProps)(Droplist);
