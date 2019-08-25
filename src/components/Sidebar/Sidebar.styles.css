@@ -4,5 +4,21 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  flex: 1 1 35%;
+  flex: 1 1 36%;
+}
+
+@media (max-width:576px) {
+  .sidebar {
+    height: 300px;
+    padding-top: 55px;
+    flex: 1 1 100%;
+  }
+}
+
+@media (min-width:577px) and (max-width:768px) {
+  .sidebar {
+    height: 300px;
+    padding-top: 55px;
+    flex: 1 1 100%;
+  }
 }
