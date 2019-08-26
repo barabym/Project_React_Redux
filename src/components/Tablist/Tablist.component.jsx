@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-max-props-per-line */
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable react/prop-types */
 import React from 'react';
 
 import './Tablist.styles.css';
@@ -12,11 +9,21 @@ function Tablist(props) {
   return (
     <div className="tablist">
       {generalStore.listFavorite.map(item => (
-        <div key={item} className={item === selectedCurrencyAbbr ? 'tab tab_selected'
-          : 'tab'} onClick={() => { props.onClickTab(item); }}
+        <div
+          key={item}
+          className={item === selectedCurrencyAbbr ? 'tab tab_selected' : 'tab'}
+          onClick={() => { props.onClickTab(item); }}
         >
-          <span>{item}</span>
-          <button type="button" className="tab__button-del-tab" onClick={event => { props.onClickDelTab(event, item); }}>X</button>
+          <span>
+            {item}
+          </span>
+          <button
+            type="button"
+            className="tab__button-del-tab"
+            onClick={event => { props.onClickDelTab(event, item); }}
+          >
+            X
+          </button>
         </div>
       ))}
     </div>

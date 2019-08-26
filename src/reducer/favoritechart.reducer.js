@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 const initialState = {
   favoriteSelectedCurrency: {},
   favoriteBaseRangeDate: [],
@@ -7,7 +6,7 @@ const initialState = {
   favoriteEndDate: new Date(),
 };
 
-export const favoriteChartReducer = (state = initialState, action) => {
+const favoriteChartReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set_favoriteSelectedCurrency':
       return { ...state, favoriteSelectedCurrency: action.payload };
@@ -25,3 +24,5 @@ export const favoriteChartReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default favoriteChartReducer;

@@ -1,10 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 const initialState = {
   valueInputFromCurrency: 1,
   idDropListCurrency: 0,
 };
 
-export const converterReducer = (state = initialState, action) => {
+const converterReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set_valueInputFromCurrency':
       return { ...state, valueInputFromCurrency: action.payload };
@@ -14,3 +13,5 @@ export const converterReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default converterReducer;

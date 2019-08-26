@@ -1,9 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 const initialState = {
   filterWord: '',
 };
 
-export const searchReducer = (state = initialState, action) => {
+const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set_filterWord':
       return { ...state, filterWord: action.payload };
@@ -11,3 +10,5 @@ export const searchReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default searchReducer;

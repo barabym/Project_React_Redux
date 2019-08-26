@@ -1,8 +1,7 @@
-/* eslint-disable import/prefer-default-export */
 import axios, { } from 'axios';
 import moment, { } from 'moment';
 
-export function getArrRateAndArrDateCurrencyInRange(idCurrency, start, end) {
+export default function getArrRateAndArrDateCurrencyInRange(idCurrency, start, end) {
   const startDate = moment(start).format('YYYY-M-D');
   const endDate = moment(end).format('YYYY-M-D');
 

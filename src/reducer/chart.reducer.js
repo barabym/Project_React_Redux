@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 const initialState = {
   baseRangeDate: [],
   baseRangeRate: [],
@@ -6,7 +5,7 @@ const initialState = {
   endDate: new Date(),
 };
 
-export const chartReducer = (state = initialState, action) => {
+const chartReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set_baseRange':
       return { ...state, baseRangeDate: action.payload[0], baseRangeRate: action.payload[1] };
@@ -18,3 +17,5 @@ export const chartReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default chartReducer;

@@ -1,4 +1,4 @@
-import { getBaseCurrency } from '../service/getBaseCurrency';
+import getBaseCurrency from '../service/getBaseCurrency';
 
 export function setSelectedCurrencyToStore(selectedCurrency) {
   return {

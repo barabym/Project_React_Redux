@@ -1,11 +1,10 @@
-/* eslint-disable import/prefer-default-export */
 const initialState = {
   baseCurrency: [],
   selectedCurrency: {},
   listFavorite: [],
 };
 
-export const generalReducer = (state = initialState, action) => {
+const generalReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'set_baseCurrency':
       return { ...state, baseCurrency: action.payload };
@@ -17,3 +16,5 @@ export const generalReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default generalReducer;

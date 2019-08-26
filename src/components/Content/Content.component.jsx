@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-max-props-per-line */
-/* eslint-disable react/jsx-first-prop-new-line */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
@@ -12,7 +9,7 @@ import Button from '../Button';
 import AboutPage from '../AboutPage';
 import Tablist from '../Tablist';
 
-import { getBaseAfterFilter } from '../../service/getBaseAfterFilter';
+import getBaseAfterFilter from '../../service/getBaseAfterFilter';
 
 class Content extends Component {
   componentWillMount() {
@@ -116,47 +113,59 @@ class Content extends Component {
     return (
       <div className="content">
 
-        <Route exact path={['/', '/currensies']} render={() => (
-          <>
-            <Button
-              onClickButton={this.onClickAddFavoriteCurrency}
-            />
-            <Chart
-              flagDatePickersIsShow
-            />
-          </>
-        )}
-        />
-
-        <Route exact path="/calculator" render={() => (
-          <>
-            <Converter
-              valueInputTo={this.convertCurrency()}
-            />
-            <Chart />
-          </>
-        )}
-        />
-
-        <Route exact path="/about" render={() => (
-          <AboutPage />
-        )}
-        />
-
-        <Route exact path="/favorite" render={() => (
-          <>
-            <Tablist
-              onClickDelTab={this.onClickDelFavoriteCurrency}
-              onClickTab={this.onClickFavoriteSelectCurrencyTab}
-            />
-            <div className="chart-favorite-wrapper">
+        <Route
+          exact
+          path={['/', '/currensies']}
+          render={() => (
+            <>
+              <Button
+                onClickButton={this.onClickAddFavoriteCurrency}
+              />
               <Chart
-                flagDescriptionIsShow
                 flagDatePickersIsShow
               />
-            </div>
-          </>
-        )}
+            </>
+          )}
+        />
+
+        <Route
+          exact
+          path="/calculator"
+          render={() => (
+            <>
+              <Converter
+                valueInputTo={this.convertCurrency()}
+              />
+              <Chart />
+            </>
+          )}
+        />
+
+        <Route
+          exact
+          path="/about"
+          render={() => (
+            <AboutPage />
+          )}
+        />
+
+        <Route
+          exact
+          path="/favorite"
+          render={() => (
+            <>
+              <Tablist
+                onClickDelTab={this.onClickDelFavoriteCurrency}
+                onClickTab={this.onClickFavoriteSelectCurrencyTab}
+              />
+              <div className="chart-favorite-wrapper">
+                <Chart
+                  flagDescriptionIsShow
+                  flagDatePickersIsShow
+                />
+              </div>
+            </>
+          )}
         />
       </div>
     );

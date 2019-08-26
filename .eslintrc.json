@@ -71,6 +71,7 @@
         "react/no-array-index-key": "warn",
         "react/no-did-mount-set-state": "off",
         "react/prefer-stateless-function": "off",
+        "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/self-closing-comp": "warn",
         "react/sort-comp": "off",

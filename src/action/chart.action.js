@@ -1,4 +1,4 @@
-import { getArrRateAndArrDateCurrencyInRange } from '../service/getArrRateAndArrDateCurrencyInRange';
+import getArrRateAndArrDateCurrencyInRange from '../service/getArrRateAndArrDateCurrencyInRange';
 
 export function setBaseRangeToStore(currencyID, fromDate, endDate) {
   return dispatch => {

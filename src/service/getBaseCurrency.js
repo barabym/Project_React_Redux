@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import axios, { } from 'axios';
 import moment, { } from 'moment';
 
@@ -35,7 +34,7 @@ function getSumbolCurr(Abbr) {
   return objSymbolCur[Abbr] || '¤';
 }
 
-export function getBaseCurrency() {
+export default function getBaseCurrency() {
   const dateYesterday = moment().subtract(1, 'days').format('YYYY-M-D');
 
   return Promise.all([

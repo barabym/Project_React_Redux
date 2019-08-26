@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 
 import './Search.styles.css';
@@ -6,14 +5,25 @@ import './Search.styles.css';
 function SearchInput(props) {
   const { onChangeSearchInput } = props;
   return (
-    <input type="search" className="search__input" onChange={onChangeSearchInput} placeholder=" Search currency..." />
+    <input
+      type="search"
+      className="search__input"
+      onChange={onChangeSearchInput}
+      placeholder=" Search currency..."
+    />
   );
 }
 
 function SearchButton(props) {
   const { onClickSearchButton } = props;
   return (
-    <button type="button" className="search__button" onClick={onClickSearchButton}>Search</button>
+    <button
+      type="button"
+      className="search__button"
+      onClick={onClickSearchButton}
+    >
+      Search
+    </button>
   );
 }
 
