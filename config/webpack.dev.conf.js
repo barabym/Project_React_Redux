@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const baseWebpackConfig = require('./webpack.base.conf');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -9,6 +11,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     hot: true,
+    // hotOnly: true, //нужна ли эта настройка?
     port: 8081,
     overlay: {
       warnings: true,
@@ -19,8 +22,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
     }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(), // надо ли он? HMR глючит и с ним и без него
+    new BundleAnalyzerPlugin(),
   ],
 });
 

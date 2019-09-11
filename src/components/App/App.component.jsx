@@ -15,7 +15,7 @@ function App() {
 
       <Route
         exact
-        path={['/', '/currensies', '/calculator']}
+        path={['/', '/currencies', '/calculator']}
         render={() => (
           <>
             <Sidebar />

@@ -9,8 +9,8 @@ function Menu(props) {
     <div className="menu">
       <ul>
         <li>
-          <Link to="/currensies">
-            Currensies
+          <Link to="/currencies">
+            Currencies
           </Link>
         </li>
         <li>

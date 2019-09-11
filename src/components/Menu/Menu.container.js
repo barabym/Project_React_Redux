@@ -1,12 +1,11 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
-import Menu from './Menu.component.jsx';
+import Menu from './Menu.component';
 
-const mapStatetoProps = store => (
+const mapStateToProps = store => (
   {
     amountFavorite: +store.generalStore.listFavorite.length,
   }
 );
 
-export default connect(mapStatetoProps)(Menu);
+export default connect(mapStateToProps)(Menu);

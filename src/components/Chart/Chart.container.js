@@ -1,12 +1,11 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
 import { setFromDateToStore, setEndDateToStore } from '../../action/chart.action';
 import { setFavoriteFromDateToStore, setFavoriteEndDateToStore } from '../../action/favoritechart.action';
 
-import Chart from './Chart.component.jsx';
+import Chart from './Chart.component';
 
-const mapStatetoProps = (store, ownProps) => {
+const mapStateToProps = (store, ownProps) => {
   if (ownProps.flagDescriptionIsShow) {
     return {
       currencyName: store.favoriteChartStore.favoriteSelectedCurrency.EngName || '',
@@ -38,4 +37,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Chart);
+export default connect(mapStateToProps, mapDispatchToProps)(Chart);

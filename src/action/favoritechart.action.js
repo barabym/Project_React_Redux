@@ -1,14 +1,20 @@
 import getArrRateAndArrDateCurrencyInRange from '../service/getArrRateAndArrDateCurrencyInRange';
 
-export function setFavoriteBaseRangeToStore(currencyID, fromDate, endDate) {
-  return dispatch => {
-    getArrRateAndArrDateCurrencyInRange(currencyID, fromDate, endDate)
-      .then(response => {
-        dispatch({
-          type: 'set_favoriteBaseRange',
-          payload: response,
+export function setFavoriteCurrencyBaseRangeToStore(currencyData, fromDate, endDate) {
+  if (typeof currencyData === 'number') {
+    return dispatch => {
+      getArrRateAndArrDateCurrencyInRange(currencyData, fromDate, endDate)
+        .then(response => {
+          dispatch({
+            type: 'set_favoriteBaseRange',
+            payload: response,
+          });
         });
-      });
+    };
+  }
+  return {
+    type: 'set_favoriteBaseRange',
+    payload: currencyData,
   };
 }
 

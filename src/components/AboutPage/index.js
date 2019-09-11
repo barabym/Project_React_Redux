@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
-import AboutPage from './AboutPage.component.jsx';
+import AboutPage from './AboutPage.component';
 
 export default AboutPage;

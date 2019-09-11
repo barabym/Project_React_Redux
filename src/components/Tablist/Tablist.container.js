@@ -1,13 +1,12 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
-import Tablist from './Tablist.component.jsx';
+import Tablist from './Tablist.component';
 
-const mapStatetoProps = store => (
+const mapStateToProps = store => (
   {
     generalStore: store.generalStore,
     favoriteChartStore: store.favoriteChartStore,
   }
 );
 
-export default connect(mapStatetoProps)(Tablist);
+export default connect(mapStateToProps)(Tablist);

@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
-import Button from './Button.component.jsx';
+import Button from './Button.component';
 
 export default Button;

@@ -29,14 +29,13 @@ ul {
   color: red;
 }
 
-@media (max-width:576px) {
-  .menu {
-    margin-left: 0%;
-    width: 100%;
+@media (max-width:480px) {
+  .menu li {
+    padding: 0 5px;
   }
 }
 
-@media (min-width:577px) and (max-width:768px) {
+@media (max-width:768px) {
   .menu {
     margin-left: 0%;
     width: 100%;

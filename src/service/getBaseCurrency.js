@@ -1,7 +1,7 @@
 import axios, { } from 'axios';
 import moment, { } from 'moment';
 
-function getSumbolCurr(Abbr) {
+function getSymbolCurr(Abbr) {
   const objSymbolCur = {
     AUD: '$',
     BGN: 'лв',
@@ -54,7 +54,7 @@ export default function getBaseCurrency() {
         Scale: Obj.Cur_Scale,
         Rate: Obj.Cur_OfficialRate,
         Diff: +(Obj.Cur_OfficialRate - baseCurrencyYesterday.data[i].Cur_OfficialRate).toFixed(4),
-        SymbolCur: getSumbolCurr(Obj.Cur_Abbreviation),
+        SymbolCur: getSymbolCurr(Obj.Cur_Abbreviation),
         EngName: listCurrencyAbbr[Obj.Cur_ID],
       }));
 

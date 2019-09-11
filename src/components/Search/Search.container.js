@@ -1,12 +1,11 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
-import setfilterWordToStore from '../../action/search.action';
+import setFilterWordToStore from '../../action/search.action';
 
-import Search from './Search.component.jsx';
+import Search from './Search.component';
 
 const mapDispatchToProps = {
-  setfilterWordToStore,
+  setFilterWordToStore,
 };
 
 export default connect(null, mapDispatchToProps)(Search);

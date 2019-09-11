@@ -33,15 +33,15 @@ class Search extends Component {
   }
 
   onClickSearchButton = () => {
-    const { setfilterWordToStore } = this.props;
+    const { setFilterWordToStore } = this.props;
     const { searchWord } = this.state;
-    setfilterWordToStore(searchWord);
+    setFilterWordToStore(searchWord);
   }
 
   onChangeSearchInput = event => {
-    const { setfilterWordToStore } = this.props;
+    const { setFilterWordToStore } = this.props;
     this.setState({ searchWord: event.target.value });
-    if (!event.target.value) { setfilterWordToStore(''); }
+    if (!event.target.value) { setFilterWordToStore(''); }
   }
 
   render() {

@@ -1,11 +1,10 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
 import { setSelectedCurrencyToStore } from '../../action/general.action';
 
-import ItemList from './ItemList.component.jsx';
+import ItemList from './ItemList.component';
 
-const mapStatetoProps = store => (
+const mapStateToProps = store => (
   {
     generalStore: store.generalStore,
     searchStore: store.searchStore,
@@ -16,4 +15,4 @@ const mapDispatchToProps = {
   setSelectedCurrencyToStore,
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(ItemList);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList);

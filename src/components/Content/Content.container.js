@@ -1,13 +1,12 @@
-/* eslint-disable import/extensions */
 import { connect } from 'react-redux';
 
 import { setListFavoriteToStore, setBaseCurrencyToStore, setSelectedCurrencyToStore } from '../../action/general.action';
 import { setBaseRangeToStore } from '../../action/chart.action';
-import { setFavoriteSelectedCurrencyToStore, setFavoriteBaseRangeToStore } from '../../action/favoritechart.action';
+import { setFavoriteSelectedCurrencyToStore, setFavoriteCurrencyBaseRangeToStore } from '../../action/favoritechart.action';
 
-import Content from './Content.component.jsx';
+import Content from './Content.component';
 
-const mapStatetoProps = store => (
+const mapStateToProps = store => (
   {
     generalStore: store.generalStore,
     converterStore: store.converterStore,
@@ -23,7 +22,7 @@ const mapDispatchToProps = {
   setListFavoriteToStore,
   setBaseRangeToStore,
   setFavoriteSelectedCurrencyToStore,
-  setFavoriteBaseRangeToStore,
+  setFavoriteCurrencyBaseRangeToStore,
 };
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

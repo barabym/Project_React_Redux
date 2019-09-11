@@ -12,7 +12,8 @@ import Tablist from '../Tablist';
 import getBaseAfterFilter from '../../service/getBaseAfterFilter';
 
 class Content extends Component {
-  componentWillMount() {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillMount() {
     if (!JSON.parse(localStorage.getItem('listFavorite'))) localStorage.setItem('listFavorite', JSON.stringify([]));
   }
 
@@ -28,7 +29,7 @@ class Content extends Component {
   componentDidUpdate(prevProps) {
     const {
       generalStore, chartStore, favoriteChartStore, setBaseRangeToStore,
-      setFavoriteSelectedCurrencyToStore, setFavoriteBaseRangeToStore,
+      setFavoriteSelectedCurrencyToStore, setFavoriteCurrencyBaseRangeToStore,
     } = this.props;
 
     if (generalStore.baseCurrency.length && generalStore.listFavorite.length
@@ -50,7 +51,7 @@ class Content extends Component {
         !== favoriteChartStore.favoriteSelectedCurrency.ID
         || prevProps.favoriteChartStore.favoriteFromDate !== favoriteChartStore.favoriteFromDate
         || prevProps.favoriteChartStore.favoriteEndDate !== favoriteChartStore.favoriteEndDate)) {
-      setFavoriteBaseRangeToStore(favoriteChartStore.favoriteSelectedCurrency.ID,
+      setFavoriteCurrencyBaseRangeToStore(favoriteChartStore.favoriteSelectedCurrency.ID,
         favoriteChartStore.favoriteFromDate, favoriteChartStore.favoriteEndDate);
     }
   }
@@ -72,7 +73,7 @@ class Content extends Component {
 
     const {
       generalStore, favoriteChartStore, setListFavoriteToStore,
-      setFavoriteSelectedCurrencyToStore, setFavoriteBaseRangeToStore,
+      setFavoriteSelectedCurrencyToStore, setFavoriteCurrencyBaseRangeToStore,
     } = this.props;
 
     const listFavoriteCurrency = generalStore.listFavorite;
@@ -85,7 +86,7 @@ class Content extends Component {
     }
 
     if (!listFavoriteCurrency.length) {
-      setFavoriteBaseRangeToStore([[], []]);
+      setFavoriteCurrencyBaseRangeToStore([[], []]);
     }
   }
 
@@ -115,7 +116,7 @@ class Content extends Component {
 
         <Route
           exact
-          path={['/', '/currensies']}
+          path={['/', '/currencies']}
           render={() => (
             <>
               <Button

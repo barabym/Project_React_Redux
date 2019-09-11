@@ -15,6 +15,10 @@ p {
   align-items: center;
 }
 
+.chart__wrapper-for-description {
+  text-align: center;
+}
+
 .chart__datepicker {
   font-size: 1rem;
   outline: none;
@@ -28,4 +32,35 @@ p {
 
 .chart__datepicker-title {
   margin: 0;
+}
+
+@media (max-width:480px) {
+  .chart__datepicker {
+    width: 120px;
+    margin: 0 5px;
+  }
+  .chart__datepicker-title {
+    margin: 0 5px;
+  }
+  .chart__wrapper-for-addition {
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+  .chart__wrapper-for-description {
+    width: 100%;
+    padding-bottom: 5px;
+  }
+}
+
+@media (min-width:481px) and (max-width:576px) {
+  .chart__datepicker {
+    width: 120px;
+    margin: 0 5px;
+  }
+  .chart__datepicker-title {
+    margin: 0 5px;
+  }
+  .chart__wrapper-for-addition {
+    font-size: 1rem;
+  }
 }

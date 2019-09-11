@@ -9,7 +9,7 @@ function ChartDescription(props) {
   const { flagDescriptionIsShow, currencyName, currencyAbbreviation } = props;
   if (flagDescriptionIsShow) {
     return (
-      <div>
+      <div className="chart__wrapper-for-description">
         <p>
           Currency Name:
           {' '}
@@ -26,7 +26,7 @@ function ChartDescription(props) {
   return null;
 }
 
-function ChartDatepicker(props) {
+function ChartDatePicker(props) {
   const {
     flagDatePickersIsShow, title, startDate, onChange,
   } = props;
@@ -120,13 +120,13 @@ class Chart extends Component {
             currencyName={currencyName}
             currencyAbbreviation={currencyAbbreviation}
           />
-          <ChartDatepicker
+          <ChartDatePicker
             flagDatePickersIsShow={flagDatePickersIsShow}
             title="From date:"
             startDate={fromDate}
             onChange={onChangeFromDate}
           />
-          <ChartDatepicker
+          <ChartDatePicker
             flagDatePickersIsShow={flagDatePickersIsShow}
             title="End date:"
             startDate={endDate}

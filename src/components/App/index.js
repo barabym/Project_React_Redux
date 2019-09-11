@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
-import App from './App.component.jsx';
+import App from './App.component';
 
 export default App;

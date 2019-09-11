@@ -14,7 +14,7 @@ class Converter extends Component {
     const { generalStore, converterStore, valueInputTo } = this.props;
     return (
       <div className="converter">
-        <div className="converter__warrper-for-string">
+        <div className="converter__wrapper-for-string">
           <div className="converter__text">
             Value
           </div>
@@ -28,7 +28,7 @@ class Converter extends Component {
             {generalStore.selectedCurrency.Abbr || ''}
           </div>
         </div>
-        <div className="converter__warrper-for-string">
+        <div className="converter__wrapper-for-string">
           <div className="converter__text">
             Destination
           </div>
