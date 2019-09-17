@@ -5,7 +5,7 @@ export default function getArrRateAndArrDateCurrencyInRange(idCurrency, start, e
   const startDate = moment(start).format('YYYY-M-D');
   const endDate = moment(end).format('YYYY-M-D');
 
-  return axios.get(`http://www.nbrb.by/API/ExRates/Rates/Dynamics/${idCurrency}?startDate=${startDate}&endDate=${endDate}`)
+  return axios.get(`https://www.nbrb.by/API/ExRates/Rates/Dynamics/${idCurrency}?startDate=${startDate}&endDate=${endDate}`)
 
     .then(baseCurrencyRange => {
       const baseRangeDate = [];

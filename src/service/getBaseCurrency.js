@@ -38,9 +38,9 @@ export default function getBaseCurrency() {
   const dateYesterday = moment().subtract(1, 'days').format('YYYY-M-D');
 
   return Promise.all([
-    axios.get('http://www.nbrb.by/API/ExRates/Rates?Periodicity=0'),
-    axios.get(`http://www.nbrb.by/API/ExRates/Rates?onDate=${dateYesterday}&Periodicity=0`),
-    axios.get('http://www.nbrb.by/API/ExRates/Currencies'),
+    axios.get('https://www.nbrb.by/API/ExRates/Rates?Periodicity=0'),
+    axios.get(`https://www.nbrb.by/API/ExRates/Rates?onDate=${dateYesterday}&Periodicity=0`),
+    axios.get('https://www.nbrb.by/API/ExRates/Currencies'),
   ])
     .then(([baseCurrencyNow, baseCurrencyYesterday, baseCurrencyWithAbbr]) => {
       let listCurrencyAbbr = {};
